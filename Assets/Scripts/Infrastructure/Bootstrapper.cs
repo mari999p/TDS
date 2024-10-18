@@ -1,15 +1,21 @@
-using System;
+using TDS.Infrastructure.Locator;
+using TDS.Infrastructure.State;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace TDS.Infrastructure
 {
     public class Bootstrapper : MonoBehaviour
     {
-        private void Start()
+        #region Unity lifecycle
+
+        private void Awake()
         {
-            SceneManager.LoadScene("GameScene");
+            StateMachine sm = new();
+            ServicesLocator.Instance.Register(sm);
+
+            sm.Enter<BootstrapState>();
         }
+
+        #endregion
     }
 }
-
