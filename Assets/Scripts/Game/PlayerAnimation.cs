@@ -6,9 +6,10 @@ namespace TDS.Game
     {
         #region Variables
 
-        [SerializeField] private Animator _animator;
-        private static readonly int Movement = Animator.StringToHash("movement");
         private static readonly int Fire = Animator.StringToHash("fire");
+        private static readonly int Movement = Animator.StringToHash("movement");
+
+        [SerializeField] private Animator _animator;
 
         #endregion
 
