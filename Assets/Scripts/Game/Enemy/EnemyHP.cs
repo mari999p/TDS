@@ -1,7 +1,6 @@
-using TDS.Game.Enemy;
 using UnityEngine;
 
-namespace TDS.Game.UI
+namespace TDS.Game.Enemy
 {
     public class EnemyHp : MonoBehaviour
     {
@@ -55,9 +54,14 @@ namespace TDS.Game.UI
             }
 
             _isDead = true;
-            _enemyAttack.enabled = false;
+            DisablePlayerControls();
             _enemyAttack.StopAttacking();
             _animation.TriggerDeath();
+        }
+
+        private void DisablePlayerControls()
+        {
+            _enemyAttack.enabled = false;
         }
 
         #endregion

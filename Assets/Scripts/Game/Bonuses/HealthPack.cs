@@ -1,28 +1,25 @@
-using TDS.Game.UI;
+using TDS.Game.Player;
 using UnityEngine;
 
 namespace TDS.Game.Bonuses
 {
-    public class HealthPack : MonoBehaviour
+    public class HealthPack : BonusPackage
     {
         #region Variables
 
-        [Header("HP Settings")]
+        [Header(nameof(HealthPack))]
         [SerializeField] private int _healthAmount = 20;
 
         #endregion
 
-        #region Unity lifecycle
+        #region Protected methods
 
-        private void OnTriggerEnter2D(Collider2D other)
+        protected override void PerformActions()
         {
-            PlayerHp playerHp = other.GetComponent<PlayerHp>();
-            if (playerHp != null)
-            {
-                Debug.Log("Аптечка подобрана");
-                playerHp.Heal(_healthAmount);
-                Destroy(gameObject);
-            }
+            base.PerformActions();
+            Debug.Log("Аптечка подобрана");
+            PlayerHp playerHp = FindObjectOfType<PlayerHp>();
+            playerHp.Heal(_healthAmount);
         }
 
         #endregion

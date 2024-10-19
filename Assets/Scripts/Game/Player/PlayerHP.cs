@@ -1,8 +1,9 @@
 using System.Collections;
-using TDS.Game.Player;
+using TDS.Infrastructure.Locator;
+using TDS.Service.SceneLoading;
 using UnityEngine;
 
-namespace TDS.Game.UI
+namespace TDS.Game.Player
 {
     public class PlayerHp : MonoBehaviour
     {
@@ -61,10 +62,16 @@ namespace TDS.Game.UI
 
         private IEnumerator Die()
         {
-            _playerMovement.enabled = false;
-            _playerAttack.enabled = false;
+            DisablePlayerControls();
             _animation.TriggerDeath();
             yield return new WaitForSeconds(_deathDelay);
+            ServicesLocator.Instance.Get<SceneLoaderService>().Load(SceneName.Game);
+        }
+
+        private void DisablePlayerControls()
+        {
+            _playerMovement.enabled = false;
+            _playerAttack.enabled = false;
         }
 
         #endregion

@@ -1,5 +1,5 @@
 using System.Collections;
-using TDS.Game.UI;
+using TDS.Game.Enemy;
 using UnityEngine;
 
 namespace TDS.Game.Player

@@ -14,6 +14,8 @@ namespace TDS.Game.Enemy
         [Header("Settings")]
         [SerializeField] private EnemyBullet _bulletPrefab;
         [SerializeField] private Transform _spawnPointTransform;
+
+        [Header("Attack settings")]
         [SerializeField] private float _fireRate = 2.0f;
         [SerializeField] private float _delayBeforeBulletSpawn;
         private Coroutine _attackCoroutine;
