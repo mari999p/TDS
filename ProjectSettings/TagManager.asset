@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - BadItem
   layers:
   - Default
   - TransparentFX
@@ -11,11 +13,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - PlayerBullet
+  - EnemyBullet
+  - HP
   - 
   - 
   - 
@@ -44,9 +46,12 @@ TagManager:
   - name: Backround
     uniqueID: 1994445405
     locked: 0
-  - name: Buller
+  - name: Bullet
     uniqueID: 1963127321
     locked: 0
   - name: Model
     uniqueID: 913981677
+    locked: 0
+  - name: HP
+    uniqueID: 1535269965
     locked: 0
