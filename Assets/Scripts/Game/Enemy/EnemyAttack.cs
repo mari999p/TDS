@@ -15,7 +15,9 @@ namespace TDS.Game.Enemy
         [SerializeField] private EnemyBullet _bulletPrefab;
         [SerializeField] private Transform _spawnPointTransform;
         [SerializeField] private float _fireRate = 2.0f;
+        [SerializeField] private float _delayBeforeBulletSpawn;
         private Coroutine _attackCoroutine;
+
         #endregion
 
         #region Unity lifecycle
@@ -24,6 +26,18 @@ namespace TDS.Game.Enemy
         {
             _attackCoroutine = StartCoroutine(AttackRoutine());
         }
+
+        private void Update()
+        {
+            Vector3 direction = _playerTransform.position - transform.position;
+            direction.z = 0;
+            transform.up = direction.normalized;
+        }
+
+        #endregion
+
+        #region Public methods
+
         public void StopAttacking()
         {
             if (_attackCoroutine != null)
@@ -31,13 +45,6 @@ namespace TDS.Game.Enemy
                 StopCoroutine(_attackCoroutine);
                 _attackCoroutine = null;
             }
-        }
-
-        private void Update()
-        {
-            Vector3 direction = _playerTransform.position - transform.position;
-            direction.z = 0;
-            transform.up = direction.normalized;
         }
 
         #endregion
@@ -55,7 +62,14 @@ namespace TDS.Game.Enemy
 
         private void Fire()
         {
+            StartCoroutine(FireWithAnimationDelay());
+        }
+
+        private IEnumerator FireWithAnimationDelay()
+
+        {
             _animation.TriggerAttack();
+            yield return new WaitForSeconds(_delayBeforeBulletSpawn);
             Vector2 direction = _playerTransform.position - _spawnPointTransform.position;
             EnemyBullet bullet =
                 Instantiate(_bulletPrefab, _spawnPointTransform.position, _spawnPointTransform.rotation);

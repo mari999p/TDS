@@ -11,10 +11,10 @@ namespace TDS.Infrastructure.State
         public override void Enter()
         {
             Debug.Log("LoadGameState Enter");
-            
+
             SceneLoaderService sceneLoaderService = ServicesLocator.Instance.Get<SceneLoaderService>();
             sceneLoaderService.Load(SceneName.Game);
-            
+
             StateMachine.Enter<GameState>();
         }
 

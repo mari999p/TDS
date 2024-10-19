@@ -1,4 +1,3 @@
-using TDS.Game.UI;
 using UnityEngine;
 
 namespace TDS.Game.Player
@@ -9,7 +8,6 @@ namespace TDS.Game.Player
 
         [Header("Components")]
         [SerializeField] private PlayerAnimation _animation;
-        
 
         [Header("Settings")]
         [SerializeField] private Rigidbody2D _rb;
@@ -27,11 +25,14 @@ namespace TDS.Game.Player
 
         private void Update()
         {
-            if (!enabled) return;
+            if (!enabled)
+            {
+                return;
+            }
+
             Move();
             Rotate();
         }
-        
 
         #endregion
 

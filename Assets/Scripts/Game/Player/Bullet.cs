@@ -8,10 +8,10 @@ namespace TDS.Game.Player
     {
         #region Variables
 
+        [Header("Settings")]
         [SerializeField] private Rigidbody2D _rb;
         [SerializeField] private float _speed = 50f;
         [SerializeField] private float _lifetime = 3f;
-        [SerializeField] private EnemyHp _enemyHp;
 
         #endregion
 
@@ -22,6 +22,7 @@ namespace TDS.Game.Player
             _rb.velocity = transform.up * _speed;
             StartCoroutine(DestroyWithLifetimeDelay());
         }
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.CompareTag("Enemy"))
@@ -32,7 +33,7 @@ namespace TDS.Game.Player
                     playerHp.TakeDamage(10);
                 }
             }
-            
+
             Destroy(gameObject);
         }
 

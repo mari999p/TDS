@@ -9,7 +9,7 @@ namespace TDS.Game.Player
 
         [Header("Components")]
         [SerializeField] private PlayerAnimation _animation;
-        
+
         [Header("Settings")]
         [SerializeField] private Bullet _bulletPrefab;
         [SerializeField] private Transform _spawnPointTransform;

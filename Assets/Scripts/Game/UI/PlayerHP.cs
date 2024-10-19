@@ -4,46 +4,69 @@ using UnityEngine;
 
 namespace TDS.Game.UI
 {
-    public class PlayerHp: MonoBehaviour
+    public class PlayerHp : MonoBehaviour
     {
-        [Header("Health Settings")]
+        #region Variables
+
+        [Header("HP Settings")]
         [SerializeField] private int _maxHealth = 100;
         [SerializeField] private int _currentHealth;
-        [SerializeField] private PlayerAnimation _animation;
         [SerializeField] private float _deathDelay = 5f;
-        
+
+        [Header("Animation Settings")]
+        [SerializeField] private PlayerAnimation _animation;
         [SerializeField] private PlayerMovement _playerMovement;
         [SerializeField] private PlayerAttack _playerAttack;
-        
-        
-         private void Start()
+        private bool _isDead;
+
+        #endregion
+
+        #region Unity lifecycle
+
+        private void Start()
         {
             _currentHealth = _maxHealth;
-          
-            
+        }
+
+        #endregion
+
+        #region Public methods
+
+        public void Heal(int amount)
+        {
+            if (!_isDead)
+            {
+                _currentHealth = Mathf.Min(_currentHealth + amount, _maxHealth);
+            }
         }
 
         public void TakeDamage(int damage)
         {
+            if (_isDead)
+            {
+                return;
+            }
+
             _currentHealth -= damage;
             if (_currentHealth <= 0)
             {
+                _isDead = true;
                 StartCoroutine(Die());
             }
         }
 
-        public void Heal(int amount)
-        {
-            _currentHealth = Mathf.Min(_currentHealth + amount, _maxHealth);
-        }
+        #endregion
+
+        #region Private methods
 
         private IEnumerator Die()
         {
             _playerMovement.enabled = false;
             _playerAttack.enabled = false;
             _animation.TriggerDeath();
-            Debug.Log("ПЕРС УМЕР");
             yield return new WaitForSeconds(_deathDelay);
         }
+
+        #endregion
     }
 }

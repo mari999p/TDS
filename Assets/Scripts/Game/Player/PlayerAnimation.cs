@@ -6,9 +6,9 @@ namespace TDS.Game.Player
     {
         #region Variables
 
+        private static readonly int Death = Animator.StringToHash("death");
         private static readonly int Fire = Animator.StringToHash("fire");
         private static readonly int Movement = Animator.StringToHash("movement");
-        private static readonly int Death = Animator.StringToHash("death");
 
         [SerializeField] private Animator _animator;
 
@@ -25,6 +25,7 @@ namespace TDS.Game.Player
         {
             _animator.SetTrigger(Fire);
         }
+
         public void TriggerDeath()
         {
             _animator.SetTrigger(Death);
