@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5762514076285945454}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Market - Buller Spawn Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,11 +42,12 @@ GameObject:
   - component: {fileID: 4958903856003025363}
   - component: {fileID: 6651280526164088956}
   - component: {fileID: 5720802480826542373}
+  - component: {fileID: 4796617068210562947}
   - component: {fileID: 9220933395873716651}
   - component: {fileID: 5432276790705395069}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,6 +99,24 @@ MonoBehaviour:
   _animation: {fileID: 8241069347350908924}
   _bulletPrefab: {fileID: 886631526498383515, guid: e80d9d5199499fe489946b673348150c, type: 3}
   _spawnPointTransform: {fileID: 5762514076285945454}
+--- !u!114 &4796617068210562947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2759796544306873766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6256290cb13a47dca76a742b7be79d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
+  _currentHealth: 0
+  _animation: {fileID: 8241069347350908924}
+  _deathDelay: 5
+  _playerMovement: {fileID: 6651280526164088956}
+  _playerAttack: {fileID: 5720802480826542373}
 --- !u!50 &9220933395873716651
 Rigidbody2D:
   serializedVersion: 4
@@ -154,7 +173,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.17}
@@ -172,7 +191,7 @@ GameObject:
   - component: {fileID: 8810956042328796344}
   - component: {fileID: 8457262212613114419}
   - component: {fileID: 8241069347350908924}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
