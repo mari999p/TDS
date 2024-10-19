@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TDS.Game
+namespace TDS.Game.Player
 
 {
     public class PlayerAttack : MonoBehaviour

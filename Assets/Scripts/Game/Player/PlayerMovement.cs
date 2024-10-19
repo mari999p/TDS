@@ -1,6 +1,7 @@
+using TDS.Game.UI;
 using UnityEngine;
 
-namespace TDS.Game
+namespace TDS.Game.Player
 {
     public class PlayerMovement : MonoBehaviour
     {
@@ -8,6 +9,7 @@ namespace TDS.Game
 
         [Header("Components")]
         [SerializeField] private PlayerAnimation _animation;
+        
 
         [Header("Settings")]
         [SerializeField] private Rigidbody2D _rb;
@@ -25,9 +27,11 @@ namespace TDS.Game
 
         private void Update()
         {
+            if (!enabled) return;
             Move();
             Rotate();
         }
+        
 
         #endregion
 

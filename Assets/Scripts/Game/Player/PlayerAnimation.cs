@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TDS.Game
+namespace TDS.Game.Player
 {
     public class PlayerAnimation : MonoBehaviour
     {
@@ -8,6 +8,7 @@ namespace TDS.Game
 
         private static readonly int Fire = Animator.StringToHash("fire");
         private static readonly int Movement = Animator.StringToHash("movement");
+        private static readonly int Death = Animator.StringToHash("death");
 
         [SerializeField] private Animator _animator;
 
@@ -23,6 +24,10 @@ namespace TDS.Game
         public void TriggerAttack()
         {
             _animator.SetTrigger(Fire);
+        }
+        public void TriggerDeath()
+        {
+            _animator.SetTrigger(Death);
         }
 
         #endregion
