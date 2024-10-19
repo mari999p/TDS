@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5762514076285945454}
   m_Layer: 6
-  m_Name: Market - Buller Spawn Position
+  m_Name: Market - Bullet Spawn Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,8 +113,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _currentHealth: 0
-  _animation: {fileID: 8241069347350908924}
   _deathDelay: 5
+  _animation: {fileID: 8241069347350908924}
   _playerMovement: {fileID: 6651280526164088956}
   _playerAttack: {fileID: 5720802480826542373}
 --- !u!50 &9220933395873716651
