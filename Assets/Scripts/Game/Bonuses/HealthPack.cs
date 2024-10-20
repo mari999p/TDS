@@ -1,4 +1,5 @@
 using TDS.Game.Player;
+using TDS.Infrastructure.Locator;
 using UnityEngine;
 
 namespace TDS.Game.Bonuses
@@ -18,7 +19,7 @@ namespace TDS.Game.Bonuses
         {
             base.PerformActions();
             Debug.Log("Аптечка подобрана");
-            PlayerHp playerHp = FindObjectOfType<PlayerHp>();
+            PlayerHp playerHp = ServicesLocator.Instance.Get<PlayerHp>();
             playerHp.Heal(_healthAmount);
         }
 
