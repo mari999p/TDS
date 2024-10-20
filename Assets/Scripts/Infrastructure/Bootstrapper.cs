@@ -1,3 +1,4 @@
+using TDS.Game.Player;
 using TDS.Infrastructure.Locator;
 using TDS.Infrastructure.State;
 using UnityEngine;
@@ -12,7 +13,6 @@ namespace TDS.Infrastructure
         {
             StateMachine sm = new();
             ServicesLocator.Instance.Register(sm);
-
             sm.Enter<BootstrapState>();
         }
 

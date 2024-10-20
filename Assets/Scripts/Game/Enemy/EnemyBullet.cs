@@ -27,10 +27,7 @@ namespace TDS.Game.Enemy
             if (collision.CompareTag("Player"))
             {
                 PlayerHp playerHp = collision.GetComponent<PlayerHp>();
-                if (playerHp != null)
-                {
-                    playerHp.TakeDamage(10);
-                }
+                playerHp.TakeDamage(10);
             }
 
             Destroy(gameObject);
