@@ -35,11 +35,6 @@ namespace TDS.Infrastructure.Locator
 
         #region Public methods
 
-        public bool Contains<T>()
-        {
-            return _services.ContainsKey(typeof(T));
-        }
-
         public T Get<T>() where T : class, IService
         {
             Assert.IsTrue(_services.ContainsKey(typeof(T)), $"Service {typeof(T).Name} not registered");
@@ -49,7 +44,7 @@ namespace TDS.Infrastructure.Locator
         public void Register<T>(T service) where T : class, IService
         {
             Assert.IsFalse(_services.ContainsKey(typeof(T)),
-                $"Can't register service  {typeof(T).Name} because it is not registered");
+                $"Can't register service  {typeof(T).Name} because it is  registered");
 
             _services.Add(typeof(T), service);
         }

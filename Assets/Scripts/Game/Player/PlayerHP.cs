@@ -26,11 +26,13 @@ namespace TDS.Game.Player
 
         private void Start()
         {
+            ServicesLocator.Instance.Register(this);
             _currentHealth = _maxHealth;
-            if (!ServicesLocator.Instance.Contains<PlayerHp>())
-            {
-                ServicesLocator.Instance.Register(this);
-            }
+        }
+
+        private void OnDestroy()
+        {
+            ServicesLocator.Instance.UnRegister<PlayerHp>();
         }
 
         #endregion
