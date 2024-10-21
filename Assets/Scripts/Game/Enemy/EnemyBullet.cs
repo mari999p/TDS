@@ -24,7 +24,7 @@ namespace TDS.Game.Enemy
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.CompareTag("Player"))
+            if (collision.CompareTag(Tag.Player))
             {
                 PlayerHp playerHp = collision.GetComponent<PlayerHp>();
                 playerHp.TakeDamage(10);

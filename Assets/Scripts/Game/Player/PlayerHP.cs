@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace TDS.Game.Player
 {
-    public class PlayerHp : MonoBehaviour
+    public class PlayerHp : MonoBehaviour, IService
     {
         #region Variables
 
@@ -27,6 +27,10 @@ namespace TDS.Game.Player
         private void Start()
         {
             _currentHealth = _maxHealth;
+            if (!ServicesLocator.Instance.Contains<PlayerHp>())
+            {
+                ServicesLocator.Instance.Register(this);
+            }
         }
 
         #endregion
