@@ -33,6 +33,15 @@ namespace TDS.Infrastructure.Locator
 
         #endregion
 
+        #region Unity lifecycle
+
+        private void OnDestroy()
+        {
+            _instance = null;
+        }
+
+        #endregion
+
         #region Public methods
 
         public T Get<T>() where T : class, IService
