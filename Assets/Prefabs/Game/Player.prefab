@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 6651280526164088956}
   - component: {fileID: 5720802480826542373}
   - component: {fileID: 4796617068210562947}
+  - component: {fileID: -3693036611794064348}
   - component: {fileID: 9220933395873716651}
   - component: {fileID: 5432276790705395069}
   m_Layer: 6
@@ -113,10 +114,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _currentHealth: 0
-  _deathDelay: 5
   _animation: {fileID: 8241069347350908924}
   _playerMovement: {fileID: 6651280526164088956}
   _playerAttack: {fileID: 5720802480826542373}
+  _sceneReloader: {fileID: -3693036611794064348}
+--- !u!114 &-3693036611794064348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2759796544306873766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f88fac61c394930b7fcd758cc7e7638, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _reloadDelay: 5
 --- !u!50 &9220933395873716651
 Rigidbody2D:
   serializedVersion: 4
