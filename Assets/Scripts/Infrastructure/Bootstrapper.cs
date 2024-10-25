@@ -12,7 +12,6 @@ namespace TDS.Infrastructure
         {
             StateMachine sm = new();
             ServicesLocator.Instance.Register(sm);
-
             sm.Enter<BootstrapState>();
         }
 

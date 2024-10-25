@@ -33,6 +33,15 @@ namespace TDS.Infrastructure.Locator
 
         #endregion
 
+        #region Unity lifecycle
+
+        private void OnDestroy()
+        {
+            _instance = null;
+        }
+
+        #endregion
+
         #region Public methods
 
         public T Get<T>() where T : class, IService
@@ -44,7 +53,7 @@ namespace TDS.Infrastructure.Locator
         public void Register<T>(T service) where T : class, IService
         {
             Assert.IsFalse(_services.ContainsKey(typeof(T)),
-                $"Can't register service  {typeof(T).Name} because it is not registered");
+                $"Can't register service  {typeof(T).Name} because it is  registered");
 
             _services.Add(typeof(T), service);
         }

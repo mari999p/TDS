@@ -1,23 +1,24 @@
 using System.Collections;
 using TDS.Infrastructure.Locator;
-using TDS.Service.SceneLoading;
+using TDS.Service;
 using UnityEngine;
 
 namespace TDS.Game.Player
 {
-    public class PlayerHp : MonoBehaviour
+    public class PlayerHp : MonoBehaviour, IService
     {
         #region Variables
 
         [Header("HP Settings")]
         [SerializeField] private int _maxHealth = 100;
         [SerializeField] private int _currentHealth;
-        [SerializeField] private float _deathDelay = 5f;
 
         [Header("Animation Settings")]
         [SerializeField] private PlayerAnimation _animation;
         [SerializeField] private PlayerMovement _playerMovement;
         [SerializeField] private PlayerAttack _playerAttack;
+        [SerializeField] private SceneReloader _sceneReloader;
+
         private bool _isDead;
 
         #endregion
@@ -26,7 +27,13 @@ namespace TDS.Game.Player
 
         private void Start()
         {
+            ServicesLocator.Instance.Register(this);
             _currentHealth = _maxHealth;
+        }
+
+        private void OnDestroy()
+        {
+            ServicesLocator.Instance.UnRegister<PlayerHp>();
         }
 
         #endregion
@@ -64,8 +71,8 @@ namespace TDS.Game.Player
         {
             DisablePlayerControls();
             _animation.TriggerDeath();
-            yield return new WaitForSeconds(_deathDelay);
-            ServicesLocator.Instance.Get<SceneLoaderService>().Load(SceneName.Game);
+            _sceneReloader.ReloadScene();
+            yield break;
         }
 
         private void DisablePlayerControls()

@@ -25,13 +25,10 @@ namespace TDS.Game.Player
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.CompareTag("Enemy"))
+            if (collision.CompareTag(Tag.Enemy))
             {
                 EnemyHp playerHp = collision.GetComponent<EnemyHp>();
-                if (playerHp != null)
-                {
-                    playerHp.TakeDamage(10);
-                }
+                playerHp.TakeDamage(10);
             }
 
             Destroy(gameObject);
