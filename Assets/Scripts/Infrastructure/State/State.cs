@@ -1,8 +1,12 @@
+using TDS.Infrastructure.Locator;
+
 namespace TDS.Infrastructure.State
 {
     public abstract class State
     {
         #region Properties
+
+        protected ServicesLocator ServicesLocator => ServicesLocator.Instance;
 
         protected StateMachine StateMachine { get; private set; }
 

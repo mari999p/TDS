@@ -1,5 +1,5 @@
 using System.Collections;
-using TDS.Game.Enemy;
+using TDS.Game.Common;
 using UnityEngine;
 
 namespace TDS.Game.Player
@@ -8,17 +8,10 @@ namespace TDS.Game.Player
     {
         #region Variables
 
-        [Header("Settings")]
         [SerializeField] private Rigidbody2D _rb;
-        [SerializeField] private float _speed = 50f;
+        [SerializeField] private float _speed = 10f;
         [SerializeField] private float _lifetime = 3f;
-        [SerializeField] private int _damage = 10;
-
-        #endregion
-
-        #region Properties
-
-        protected int Damage => _damage;
+        [SerializeField] private int _damage = 2;
 
         #endregion
 
@@ -27,27 +20,17 @@ namespace TDS.Game.Player
         private void Start()
         {
             _rb.velocity = transform.up * _speed;
+
             StartCoroutine(DestroyWithLifetimeDelay());
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            if (collision.CompareTag(Tag.Enemy))
+            if (other.TryGetComponent(out UnitHp hp))
             {
-                EnemyHp playerHp = collision.GetComponent<EnemyHp>();
-                playerHp.TakeDamage(Damage);
+                hp.Change(-_damage);
             }
-
-            OnPerformCollision(collision);
-
-            Destroy(gameObject);
         }
-
-        #endregion
-
-        #region Protected methods
-
-        protected virtual void OnPerformCollision(Collider2D collision) { }
 
         #endregion
 
@@ -56,6 +39,7 @@ namespace TDS.Game.Player
         private IEnumerator DestroyWithLifetimeDelay()
         {
             yield return new WaitForSeconds(_lifetime);
+
             Destroy(gameObject);
         }
 
