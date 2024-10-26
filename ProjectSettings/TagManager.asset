@@ -18,7 +18,7 @@ TagManager:
   - PlayerBullet
   - EnemyBullet
   - PickUps
-  - 
+  - EnemyTrigger
   - 
   - 
   - 
