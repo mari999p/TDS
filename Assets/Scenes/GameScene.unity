@@ -913,11 +913,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a308d05905643e492bcf773df644470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerTransform: {fileID: 599515922703458538}
+  _playerTransform: {fileID: 1824895134}
   _animation: {fileID: 36396768}
   _bulletPrefab: {fileID: 5554300606450610723, guid: 0d16283c77d3a9844bad3d11309d548a, type: 3}
   _spawnPointTransform: {fileID: 492929502}
-  _fireRate: 3
+  _fireRate: 1
   _delayBeforeBulletSpawn: 0.3
 --- !u!4 &2081909911
 Transform:
@@ -1004,16 +1004,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -3693036611794064348, guid: c9dc8885d401a05468a53276ecc38b0a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9dc8885d401a05468a53276ecc38b0a, type: 3}
---- !u!4 &599515922703458538 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3131214973790360707, guid: c9dc8885d401a05468a53276ecc38b0a, type: 3}
-  m_PrefabInstance: {fileID: 599515922703458537}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
