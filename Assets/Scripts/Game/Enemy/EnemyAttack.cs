@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -24,6 +25,11 @@ namespace TDS.Game.Enemy
 
         #region Unity lifecycle
 
+        private void OnDisable()
+        {
+            StopAttacking();
+        }
+
         private void Start()
         {
             _attackCoroutine = StartCoroutine(AttackRoutine());
@@ -40,7 +46,7 @@ namespace TDS.Game.Enemy
 
         #region Public methods
 
-        public void StopAttacking()
+        private void StopAttacking()
         {
             if (_attackCoroutine != null)
             {
@@ -73,9 +79,8 @@ namespace TDS.Game.Enemy
             _animation.TriggerAttack();
             yield return new WaitForSeconds(_delayBeforeBulletSpawn);
             Vector2 direction = _playerTransform.position - _spawnPointTransform.position;
-            EnemyBullet bullet =
                 Instantiate(_bulletPrefab, _spawnPointTransform.position, _spawnPointTransform.rotation);
-            bullet.Initialize(direction);
+          
         }
 
         #endregion

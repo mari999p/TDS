@@ -48,14 +48,8 @@ namespace TDS.Game.Enemy
 
         private void Die()
         {
-            if (_isDead)
-            {
-                return;
-            }
-
             _isDead = true;
             DisablePlayerControls();
-            _enemyAttack.StopAttacking();
             _animation.TriggerDeath();
         }
 

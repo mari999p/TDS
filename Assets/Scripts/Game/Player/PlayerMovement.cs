@@ -25,13 +25,13 @@ namespace TDS.Game.Player
 
         private void Update()
         {
-            if (!enabled)
-            {
-                return;
-            }
-
             Move();
             Rotate();
+        }
+
+        private void OnDisable()
+        {
+            _rb.velocity = Vector2.zero;
         }
 
         #endregion

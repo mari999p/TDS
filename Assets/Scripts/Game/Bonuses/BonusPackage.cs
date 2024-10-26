@@ -10,7 +10,7 @@ namespace TDS.Game.Bonuses
         {
             if (other.CompareTag(Tag.Player))
             {
-                PerformActions();
+                PerformActions(other);
                 Destroy(gameObject);
             }
         }
@@ -19,7 +19,7 @@ namespace TDS.Game.Bonuses
 
         #region Protected methods
 
-        protected virtual void PerformActions() { }
+        protected virtual void PerformActions(Collider2D other) { }
 
         #endregion
     }

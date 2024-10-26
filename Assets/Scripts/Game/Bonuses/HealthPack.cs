@@ -1,5 +1,4 @@
 using TDS.Game.Player;
-using TDS.Infrastructure.Locator;
 using UnityEngine;
 
 namespace TDS.Game.Bonuses
@@ -15,11 +14,14 @@ namespace TDS.Game.Bonuses
 
         #region Protected methods
 
-        protected override void PerformActions()
+        protected override void PerformActions(Collider2D other)
         {
-            base.PerformActions();
-            Debug.Log("Аптечка подобрана");
-            ServicesLocator.Instance.Get<PlayerHp>().Heal(_healthAmount);
+            base.PerformActions(other);
+            if (other.CompareTag(Tag.Player))
+            {
+                Debug.Log("Аптечка подобрана");
+                other.gameObject.GetComponent<PlayerHp>().Heal(_healthAmount);
+            }
         }
 
         #endregion

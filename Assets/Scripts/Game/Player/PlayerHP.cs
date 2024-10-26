@@ -1,11 +1,8 @@
-using System.Collections;
-using TDS.Infrastructure.Locator;
-using TDS.Service;
 using UnityEngine;
 
 namespace TDS.Game.Player
 {
-    public class PlayerHp : MonoBehaviour, IService
+    public class PlayerHp : MonoBehaviour
     {
         #region Variables
 
@@ -17,7 +14,6 @@ namespace TDS.Game.Player
         [SerializeField] private PlayerAnimation _animation;
         [SerializeField] private PlayerMovement _playerMovement;
         [SerializeField] private PlayerAttack _playerAttack;
-        [SerializeField] private SceneReloader _sceneReloader;
 
         private bool _isDead;
 
@@ -27,13 +23,7 @@ namespace TDS.Game.Player
 
         private void Start()
         {
-            ServicesLocator.Instance.Register(this);
             _currentHealth = _maxHealth;
-        }
-
-        private void OnDestroy()
-        {
-            ServicesLocator.Instance.UnRegister<PlayerHp>();
         }
 
         #endregion
@@ -58,8 +48,7 @@ namespace TDS.Game.Player
             _currentHealth -= damage;
             if (_currentHealth <= 0)
             {
-                _isDead = true;
-                StartCoroutine(Die());
+                Die();
             }
         }
 
@@ -67,12 +56,11 @@ namespace TDS.Game.Player
 
         #region Private methods
 
-        private IEnumerator Die()
+        private void Die()
         {
+            _isDead = true;
             DisablePlayerControls();
             _animation.TriggerDeath();
-            _sceneReloader.ReloadScene();
-            yield break;
         }
 
         private void DisablePlayerControls()
