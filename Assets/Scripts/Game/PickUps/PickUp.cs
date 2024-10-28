@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TDS.Game.Bonuses
+namespace TDS.Game.PickUps
 {
     public abstract class PickUp : MonoBehaviour
     {

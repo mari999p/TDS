@@ -1,8 +1,7 @@
-using TDS.Game.Common;
 using TDS.Game.Player;
 using UnityEngine;
 
-namespace TDS.Game.Bonuses
+namespace TDS.Game.PickUps
 {
     public class HealthPack : PickUp
     {

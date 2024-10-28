@@ -6,9 +6,7 @@ namespace TDS.Game.Enemy
     {
         #region Variables
 
-        private static readonly int Death = Animator.StringToHash("death");
-        private static readonly int Fire = Animator.StringToHash("fire");
-
+        private static readonly int Attack = Animator.StringToHash("attack");
         [SerializeField] private Animator _animator;
 
         #endregion
@@ -17,12 +15,7 @@ namespace TDS.Game.Enemy
 
         public void TriggerAttack()
         {
-            _animator.SetTrigger(Fire);
-        }
-
-        public void TriggerDeath()
-        {
-            _animator.SetTrigger(Death);
+            _animator.SetTrigger(Attack);
         }
 
         #endregion
