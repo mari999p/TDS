@@ -12,7 +12,7 @@ namespace TDS.Game.Enemy
         [SerializeField] private Bullet _bulletPrefab;
         [SerializeField] private Transform _spawnPointTransform;
         [SerializeField] private float _fireRate = 1f;
-        [SerializeField] private EnemyAnimation _enemyAnimation;
+
         private float _timer;
 
         #endregion
@@ -37,7 +37,6 @@ namespace TDS.Game.Enemy
         private void Fire()
         {
             // _animation.TriggerAttack();
-            _enemyAnimation.TriggerAttack();
             Instantiate(_bulletPrefab, _spawnPointTransform.position, _spawnPointTransform.rotation);
         }
 

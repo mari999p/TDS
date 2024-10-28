@@ -848,7 +848,6 @@ MonoBehaviour:
   _bulletPrefab: {fileID: -3671259236800677033, guid: 0d16283c77d3a9844bad3d11309d548a, type: 3}
   _spawnPointTransform: {fileID: 612014754}
   _fireRate: 2
-  _enemyAnimation: {fileID: 845419305}
 --- !u!114 &870156963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -878,6 +877,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 870156960}
   _speed: 3
+  _chaseDistance: 5
+  _startPosition: {fileID: 870156966}
 --- !u!114 &870156965
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,6 +9,8 @@ namespace TDS.Game.Enemy
 
         [SerializeField] private Rigidbody2D _rb;
         [SerializeField] private float _speed = 3f;
+        [SerializeField] private float _detectionDistance = 5f;
+        private bool _isChasing;
 
         private Transform _target;
 
@@ -20,16 +22,33 @@ namespace TDS.Game.Enemy
         {
             if (_target == null)
             {
+                if (_isChasing)
+                {
+                    ReturnToStartPosition();
+                }
+
                 return;
             }
 
-            Rotate();
-            Move();
+            if (_isChasing)
+            {
+                CheckDistance();
+
+                Rotate();
+                Move();
+            }
         }
 
         private void OnDisable()
         {
             _rb.velocity = Vector2.zero;
+            _isChasing = false;
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, _detectionDistance);
         }
 
         #endregion
@@ -39,11 +58,21 @@ namespace TDS.Game.Enemy
         public override void SetTarget(Transform target)
         {
             _target = target;
+            _isChasing = true;
         }
 
         #endregion
 
         #region Private methods
+
+        private void CheckDistance()
+        {
+            if (Vector2.Distance(transform.position, _target.position) > _detectionDistance)
+            {
+                _isChasing = false;
+                ReturnToStartPosition();
+            }
+        }
 
         private void Move()
         {
@@ -51,6 +80,8 @@ namespace TDS.Game.Enemy
             _rb.velocity = velocity;
             // _animation.SetMovement(direction.magnitude);
         }
+
+        private void ReturnToStartPosition() { }
 
         private void Rotate()
         {

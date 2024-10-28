@@ -18,11 +18,13 @@ namespace TDS.Game.Enemy.Base
         private void OnEnable()
         {
             _triggerObserver.OnEntered += TriggerEnteredCallback;
+            _triggerObserver.OnExited += TriggerExitedCallback;
         }
 
         private void OnDisable()
         {
             _triggerObserver.OnEntered -= TriggerEnteredCallback;
+            _triggerObserver.OnExited -= TriggerExitedCallback;
         }
 
         #endregion
@@ -39,6 +41,14 @@ namespace TDS.Game.Enemy.Base
             _idle.Deactivate();
             _movement.Activate();
             _movement.SetTarget(col.transform);
+        }
+
+        private void TriggerExitedCallback(Collider2D col)
+        {
+            if (col.CompareTag(Tag.Player))
+            {
+                _movement.Deactivate();
+            }
         }
 
         #endregion
