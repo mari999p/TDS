@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - BadItem
+  - FxTemporaire
+  - ExplosiveBarrel
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX
@@ -17,7 +20,7 @@ TagManager:
   - Enemy
   - PlayerBullet
   - EnemyBullet
-  - PickUps
+  - PickUp
   - EnemyTrigger
   - 
   - 
