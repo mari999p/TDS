@@ -1,9 +1,10 @@
+using TDS.Game.Common;
 using TDS.Game.Player;
 using UnityEngine;
 
 namespace TDS.Game.Bonuses
 {
-    public class HealthPack : BonusPackage
+    public class HealthPack : PickUp
     {
         #region Variables
 

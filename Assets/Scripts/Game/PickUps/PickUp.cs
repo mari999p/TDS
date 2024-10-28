@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace TDS.Game.Bonuses
 {
-    public abstract class BonusPackage : MonoBehaviour
+    public abstract class PickUp : MonoBehaviour
     {
         #region Unity lifecycle
 
