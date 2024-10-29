@@ -9,6 +9,7 @@ namespace TDS.Game.Enemy.Base
 
         [SerializeField] private TriggerObserver _triggerObserver;
         [SerializeField] private EnemyIdle _idle;
+        [SerializeField] private PatrolEnemyMovement _patrolMovement;
         [SerializeField] private EnemyMovement _movement;
 
         #endregion
@@ -41,6 +42,7 @@ namespace TDS.Game.Enemy.Base
             _idle.Deactivate();
             _movement.Activate();
             _movement.SetTarget(col.transform);
+            _patrolMovement.SetTarget(col.transform);
         }
 
         private void TriggerExitedCallback(Collider2D col)
@@ -48,6 +50,7 @@ namespace TDS.Game.Enemy.Base
             if (col.CompareTag(Tag.Player))
             {
                 _movement.Deactivate();
+                _patrolMovement.ReturnToPatrolling();
             }
         }
 

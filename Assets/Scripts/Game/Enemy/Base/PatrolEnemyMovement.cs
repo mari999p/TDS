@@ -45,7 +45,15 @@ namespace TDS.Game.Enemy.Base
 
         #region Public methods
 
-        public override void SetTarget(Transform target) { }
+        public void ReturnToPatrolling()
+        {
+            _isPatrolling = true;
+        }
+
+        public override void SetTarget(Transform target)
+        {
+            _isPatrolling = false;
+        }
 
         #endregion
 
