@@ -305,6 +305,7 @@ MonoBehaviour:
   - {fileID: 4557786915761908251, guid: 8b2cef50f254d804ab0a8dc9b4613125, type: 3}
   _currentPointIndex: 0
   _patrolSpeed: 2
+  _isPatrolling: 1
 --- !u!114 &4353267706093675583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,6 +335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _triggerObserver: {fileID: 5483586479162215135}
   _idle: {fileID: 7351730532210189949}
+  _patrolMovement: {fileID: 6108787375787101125}
   _movement: {fileID: 4353267706093675583}
 --- !u!114 &2965771080289551699
 MonoBehaviour:
