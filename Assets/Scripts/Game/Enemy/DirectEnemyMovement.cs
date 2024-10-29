@@ -10,6 +10,7 @@ namespace TDS.Game.Enemy
         [SerializeField] private Rigidbody2D _rb;
         [SerializeField] private float _speed = 3f;
         [SerializeField] private float _detectionDistance = 5f;
+
         private bool _isChasing;
 
         private Transform _target;
@@ -22,18 +23,12 @@ namespace TDS.Game.Enemy
         {
             if (_target == null)
             {
-                if (_isChasing)
-                {
-                    ReturnToStartPosition();
-                }
-
                 return;
             }
 
             if (_isChasing)
             {
                 CheckDistance();
-
                 Rotate();
                 Move();
             }
@@ -70,7 +65,6 @@ namespace TDS.Game.Enemy
             if (Vector2.Distance(transform.position, _target.position) > _detectionDistance)
             {
                 _isChasing = false;
-                ReturnToStartPosition();
             }
         }
 
@@ -80,8 +74,6 @@ namespace TDS.Game.Enemy
             _rb.velocity = velocity;
             // _animation.SetMovement(direction.magnitude);
         }
-
-        private void ReturnToStartPosition() { }
 
         private void Rotate()
         {

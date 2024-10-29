@@ -9,7 +9,5 @@ namespace TDS.Game.Enemy.Base
         public abstract void SetTarget(Transform target);
 
         #endregion
-
-        
     }
 }

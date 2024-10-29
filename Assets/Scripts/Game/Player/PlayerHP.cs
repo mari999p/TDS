@@ -1,8 +1,9 @@
+using TDS.Game.Common;
 using UnityEngine;
 
 namespace TDS.Game.Player
 {
-    public class PlayerHp : MonoBehaviour
+    public class PlayerHp : MonoBehaviour, IDamageable
     {
         #region Variables
 
@@ -38,7 +39,7 @@ namespace TDS.Game.Player
             }
         }
 
-        public void TakeDamage(int damage)
+        private void TakeDamage(int damage)
         {
             if (_isDead)
             {
@@ -70,5 +71,10 @@ namespace TDS.Game.Player
         }
 
         #endregion
+
+        public void ApplyDamage(int damage)
+        {
+            TakeDamage(damage);
+        }
     }
 }
