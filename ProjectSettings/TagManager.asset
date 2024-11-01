@@ -22,7 +22,7 @@ TagManager:
   - EnemyBullet
   - PickUp
   - EnemyTrigger
-  - 
+  - Obstacles
   - 
   - 
   - 
@@ -46,7 +46,7 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Backround
+  - name: Background
     uniqueID: 1994445405
     locked: 0
   - name: Bullet
