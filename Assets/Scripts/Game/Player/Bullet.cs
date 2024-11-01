@@ -30,6 +30,8 @@ namespace TDS.Game.Player
             {
                 hp.Change(-_damage);
             }
+            
+            Destroy(gameObject);
         }
 
         #endregion

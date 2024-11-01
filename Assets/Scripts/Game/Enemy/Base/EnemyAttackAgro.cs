@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace TDS.Game.Enemy.Base
 {
-    public class EnemyAttackAgro : EnemyBehaviour
+    public sealed class EnemyAttackAgro : EnemyBehaviour
     {
         #region Variables
 
@@ -34,13 +34,12 @@ namespace TDS.Game.Enemy.Base
         private void TriggerEnteredCallback(Collider2D col)
         {
             _movement.Deactivate();
-            _attack.SetTarget(col.transform);
-            _attack.Activate();
+            _attack.StartAttack(col.transform);
         }
 
         private void TriggerExitedCallback(Collider2D col)
         {
-            _attack.Deactivate();
+            _attack.StopAttack();
             _movement.Activate();
         }
 

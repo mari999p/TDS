@@ -29,14 +29,11 @@ namespace TDS.Game.Enemy.Base
         {
             Gizmos.color = Color.blue;
 
-            if (_patrolPoints != null && _patrolPoints.Count > 0)
+            if (_patrolPoints is { Count: > 0 })
             {
                 foreach (Transform point in _patrolPoints)
                 {
-                    if (point != null)
-                    {
-                        Gizmos.DrawSphere(point.position, 0.2f);
-                    }
+                    Gizmos.DrawSphere(point.position, 0.2f);
                 }
             }
         }

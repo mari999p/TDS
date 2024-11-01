@@ -1,4 +1,6 @@
 using TDS.Game.Common;
+using TDS.Infrastructure.Locator;
+using TDS.Service.SceneLoading;
 using UnityEngine;
 
 namespace TDS.Game.Player
@@ -61,6 +63,7 @@ namespace TDS.Game.Player
         {
             _isDead = true;
             DisablePlayerControls();
+            // ServicesLocator.Instance.Get<SceneLoaderService>().ReloadCurrentScene(5);
             _animation.TriggerDeath();
         }
 

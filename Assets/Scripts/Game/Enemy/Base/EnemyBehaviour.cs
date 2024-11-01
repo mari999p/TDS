@@ -17,5 +17,7 @@ namespace TDS.Game.Enemy.Base
         }
 
         #endregion
+
+        protected virtual void DoStm(){}
     }
 }
