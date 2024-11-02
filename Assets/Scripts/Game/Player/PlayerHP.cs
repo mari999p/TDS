@@ -1,6 +1,4 @@
 using TDS.Game.Common;
-using TDS.Infrastructure.Locator;
-using TDS.Service.SceneLoading;
 using UnityEngine;
 
 namespace TDS.Game.Player
@@ -31,6 +29,15 @@ namespace TDS.Game.Player
 
         #endregion
 
+        #region IDamageable
+
+        public void ApplyDamage(int damage)
+        {
+            TakeDamage(damage);
+        }
+
+        #endregion
+
         #region Public methods
 
         public void Heal(int amount)
@@ -38,20 +45,6 @@ namespace TDS.Game.Player
             if (!_isDead)
             {
                 _currentHealth = Mathf.Min(_currentHealth + amount, _maxHealth);
-            }
-        }
-
-        private void TakeDamage(int damage)
-        {
-            if (_isDead)
-            {
-                return;
-            }
-
-            _currentHealth -= damage;
-            if (_currentHealth <= 0)
-            {
-                Die();
             }
         }
 
@@ -73,11 +66,20 @@ namespace TDS.Game.Player
             _playerAttack.enabled = false;
         }
 
-        #endregion
-
-        public void ApplyDamage(int damage)
+        private void TakeDamage(int damage)
         {
-            TakeDamage(damage);
+            if (_isDead)
+            {
+                return;
+            }
+
+            _currentHealth -= damage;
+            if (_currentHealth <= 0)
+            {
+                Die();
+            }
         }
+
+        #endregion
     }
 }

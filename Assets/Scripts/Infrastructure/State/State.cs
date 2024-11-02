@@ -7,7 +7,6 @@ namespace TDS.Infrastructure.State
         #region Properties
 
         protected ServicesLocator ServicesLocator => ServicesLocator.Instance;
-
         protected StateMachine StateMachine { get; private set; }
 
         #endregion

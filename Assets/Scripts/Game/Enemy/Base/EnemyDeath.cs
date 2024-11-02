@@ -22,7 +22,6 @@ namespace TDS.Game.Enemy.Base
         #region Events
 
         public event Action OnHappened;
-      
 
         #endregion
 
@@ -59,7 +58,6 @@ namespace TDS.Game.Enemy.Base
             _attackAgro.Deactivate();
             _movementAgro.Deactivate();
             _animation.PlayDeath();
-           
 
             OnHappened?.Invoke();
         }

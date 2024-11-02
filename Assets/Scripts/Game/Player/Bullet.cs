@@ -28,9 +28,9 @@ namespace TDS.Game.Player
         {
             if (other.TryGetComponent(out IDamageable hp))
             {
-                hp.ApplyDamage(-_damage);
+                hp.ApplyDamage(_damage);
             }
-            
+
             Destroy(gameObject);
         }
 
