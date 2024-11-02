@@ -365,7 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveObserver: {fileID: 1806809182349673891}
-  _stopChasingObserver: {fileID: 6904136363623037220}
+  _stopChasingObserver: {fileID: 0}
   _idle: {fileID: 2685076184937231215}
   _movement: {fileID: 3731783602287036031}
 --- !u!114 &2220500175008574876
