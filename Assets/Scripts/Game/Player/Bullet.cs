@@ -26,9 +26,9 @@ namespace TDS.Game.Player
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.TryGetComponent(out UnitHp hp))
+            if (other.TryGetComponent(out IDamageable hp))
             {
-                hp.Change(-_damage);
+                hp.ApplyDamage(-_damage);
             }
             
             Destroy(gameObject);
