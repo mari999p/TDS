@@ -11,6 +11,7 @@ namespace TDS.Infrastructure.State
         public override void Enter()
         {
             this.Log();
+
             ServicesLocator.Register(new SceneLoaderService());
             ServicesLocator.RegisterMono<CoroutineRunner>();
 

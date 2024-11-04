@@ -16,6 +16,8 @@ namespace TDS.Infrastructure.State
             sceneLoaderService.Load(SceneName.Game);
 
             StateMachine.Enter<GameState>();
+            
+            
         }
 
         public override void Exit() { }

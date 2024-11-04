@@ -1,6 +1,4 @@
 using System;
-using TDS.Infrastructure.Locator;
-using TDS.Service.SceneLoading;
 using UnityEngine;
 
 namespace TDS.Game.Common
@@ -44,16 +42,16 @@ namespace TDS.Game.Common
             if (currentHp <= 0)
             {
                 OnBossDefeated?.Invoke();
-                CompleteLevel();
+                // CompleteLevel();
             }
         }
 
-        private void CompleteLevel()
-        {
-            SceneLoaderService sceneLoaderService = ServicesLocator.Instance.Get<SceneLoaderService>();
-            sceneLoaderService.Load(SceneName.NextLevel);
-        }
-
         #endregion
+
+        // private void CompleteLevel()
+        // {
+        //     SceneLoaderService sceneLoaderService = ServicesLocator.Instance.Get<SceneLoaderService>();
+        //     sceneLoaderService.Load(SceneName.NextLevel);
+        // }
     }
 }
