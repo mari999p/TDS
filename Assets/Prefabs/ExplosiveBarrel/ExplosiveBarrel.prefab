@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1023647198308982612}
   - component: {fileID: 7680884031104284121}
   - component: {fileID: 6878578563805124359}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: ExplosiveBarrel
-  m_TagString: PlayerBullet
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,7 +56,7 @@ MonoBehaviour:
   _burningEffect: {fileID: 8994881828856718977, guid: d8042b03411c3c74cae5b98a01ab6541, type: 3}
   _layerMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 1216
 --- !u!58 &6878578563805124359
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -102,7 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1398353275627818785}
   - component: {fileID: 6064245302452141436}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: objects_outside_0013_Layer-14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
