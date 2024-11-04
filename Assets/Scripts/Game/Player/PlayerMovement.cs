@@ -1,4 +1,3 @@
-using TDS.Game.Common;
 using UnityEngine;
 
 namespace TDS.Game.Player
@@ -6,6 +5,7 @@ namespace TDS.Game.Player
     public class PlayerMovement : MonoBehaviour
     {
         #region Variables
+
         [Header("Components")]
         [SerializeField] private PlayerAnimation _animation;
 
@@ -13,7 +13,6 @@ namespace TDS.Game.Player
         [SerializeField] private Rigidbody2D _rb;
         [SerializeField] private float _speed = 10;
         private Camera _camera;
-       
 
         #endregion
 

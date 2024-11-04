@@ -42,16 +42,9 @@ namespace TDS.Game.Common
             if (currentHp <= 0)
             {
                 OnBossDefeated?.Invoke();
-                // CompleteLevel();
             }
         }
 
         #endregion
-
-        // private void CompleteLevel()
-        // {
-        //     SceneLoaderService sceneLoaderService = ServicesLocator.Instance.Get<SceneLoaderService>();
-        //     sceneLoaderService.Load(SceneName.NextLevel);
-        // }
     }
 }
