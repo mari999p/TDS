@@ -232,6 +232,7 @@ MonoBehaviour:
   _movementAgro: {fileID: 88635273}
   _attackAgro: {fileID: 88635272}
   _animation: {fileID: 789989321}
+  _pickUpService: {fileID: 0}
 --- !u!114 &88635270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1421,6 +1422,55 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &374737762
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 374737763}
+  - component: {fileID: 374737764}
+  m_Layer: 0
+  m_Name: PickUpService
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &374737763
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374737762}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1928831777}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &374737764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374737762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0529d8492374cd58d4dbc65040f0d86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _commonProbability: 100
+  _pickUpsVariants:
+  - name: 
+    pickUpPrefab: {fileID: 351862976679519603, guid: 2baba5c1956d3e142a2afa164fa24de7, type: 3}
+    probability: 100
 --- !u!1 &436296918
 GameObject:
   m_ObjectHideFlags: 0
@@ -4683,6 +4733,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 478880627}
     m_Modifications:
+    - target: {fileID: 1968326851376276440, guid: 33c61287da06e194b832513a501b7490, type: 3}
+      propertyPath: _pickUpService
+      value: 
+      objectReference: {fileID: 374737764}
     - target: {fileID: 2293896905033156525, guid: 33c61287da06e194b832513a501b7490, type: 3}
       propertyPath: m_Name
       value: Patrol_Enemy_Melee  (1)
@@ -5108,6 +5162,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2458613947827065668, guid: 50bf52278fa4a344891bb8a1238a150c, type: 3}
+      propertyPath: _pickUpService
+      value: 
+      objectReference: {fileID: 374737764}
     - target: {fileID: 4837874410354860482, guid: 50bf52278fa4a344891bb8a1238a150c, type: 3}
       propertyPath: m_Name
       value: Enemy_Melee (2)
@@ -41744,6 +41802,38 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1023647198308982612, guid: 3542033f16f237b49ac86b18223b16ac, type: 3}
   m_PrefabInstance: {fileID: 1883062232}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1928831776
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1928831777}
+  m_Layer: 0
+  m_Name: Service
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1928831777
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1928831776}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 374737763}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1931111209
 GameObject:
   m_ObjectHideFlags: 0
@@ -41946,6 +42036,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2458613947827065668, guid: 50bf52278fa4a344891bb8a1238a150c, type: 3}
+      propertyPath: _pickUpService
+      value: 
+      objectReference: {fileID: 374737764}
     - target: {fileID: 4837874410354860482, guid: 50bf52278fa4a344891bb8a1238a150c, type: 3}
       propertyPath: m_Name
       value: Enemy_Melee (1)
@@ -42038,6 +42132,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 478880627}
     m_Modifications:
+    - target: {fileID: 1968326851376276440, guid: 33c61287da06e194b832513a501b7490, type: 3}
+      propertyPath: _pickUpService
+      value: 
+      objectReference: {fileID: 374737764}
     - target: {fileID: 2293896905033156525, guid: 33c61287da06e194b832513a501b7490, type: 3}
       propertyPath: m_Name
       value: 'Patrol_Enemy_Melee '
@@ -42259,6 +42357,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2458613947827065668, guid: 50bf52278fa4a344891bb8a1238a150c, type: 3}
+      propertyPath: _pickUpService
+      value: 
+      objectReference: {fileID: 374737764}
+    - target: {fileID: 2458613947827065668, guid: 50bf52278fa4a344891bb8a1238a150c, type: 3}
+      propertyPath: _pickupOffset.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4837874410354860482, guid: 50bf52278fa4a344891bb8a1238a150c, type: 3}
       propertyPath: m_Name
       value: Enemy_Melee
@@ -42286,3 +42392,4 @@ SceneRoots:
   - {fileID: 522716315}
   - {fileID: 1480502144}
   - {fileID: 269703027}
+  - {fileID: 1928831777}

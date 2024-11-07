@@ -418,6 +418,7 @@ MonoBehaviour:
   _movementAgro: {fileID: 8861461261644513952}
   _attackAgro: {fileID: 2220500175008574876}
   _animation: {fileID: 8553023297957204613}
+  _pickUpService: {fileID: 0}
 --- !u!114 &4518867684498800722
 MonoBehaviour:
   m_ObjectHideFlags: 0

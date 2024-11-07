@@ -391,6 +391,7 @@ MonoBehaviour:
   _movementAgro: {fileID: 2292563754297684118}
   _attackAgro: {fileID: 2418071002135602907}
   _animation: {fileID: 766199078353008770}
+  _pickUpService: {fileID: 0}
 --- !u!50 &1330608037378835241
 Rigidbody2D:
   serializedVersion: 4
@@ -405,7 +406,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0
+  m_AngularDrag: 10
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:

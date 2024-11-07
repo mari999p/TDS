@@ -56,7 +56,7 @@ MonoBehaviour:
   _burningEffect: {fileID: 8994881828856718977, guid: d8042b03411c3c74cae5b98a01ab6541, type: 3}
   _layerMask:
     serializedVersion: 2
-    m_Bits: 1216
+    m_Bits: 4288
 --- !u!58 &6878578563805124359
 CircleCollider2D:
   m_ObjectHideFlags: 0

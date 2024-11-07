@@ -226,6 +226,7 @@ MonoBehaviour:
   _movementAgro: {fileID: 2820651201829055755}
   _attackAgro: {fileID: 6976179772598702847}
   _animation: {fileID: 8353019582324481717}
+  _pickUpService: {fileID: 0}
 --- !u!114 &5233030169411163528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,7 +256,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0
+  m_AngularDrag: 10
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
