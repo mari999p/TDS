@@ -55,6 +55,6 @@ TagManager:
   - name: Model
     uniqueID: 913981677
     locked: 0
-  - name: HP
+  - name: Sprite
     uniqueID: 1535269965
     locked: 0
