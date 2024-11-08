@@ -1,6 +1,6 @@
-using TDS.Infrastructure.Locator;
+using System.Collections;
+using TDS.Service.Coroutine;
 using TDS.Service.SceneLoading;
-using UnityEngine;
 
 namespace TDS.Infrastructure.State
 {
@@ -10,15 +10,23 @@ namespace TDS.Infrastructure.State
 
         public override void Enter()
         {
-            Debug.Log("LoadGameState Enter");
-
-            SceneLoaderService sceneLoaderService = ServicesLocator.Instance.Get<SceneLoaderService>();
+            SceneLoaderService sceneLoaderService = ServicesLocator.Get<SceneLoaderService>();
             sceneLoaderService.Load(SceneName.Game);
 
-            StateMachine.Enter<GameState>();
+            ServicesLocator.Get<CoroutineRunner>().StartCoroutine(EnterGameWithDelay());
         }
 
         public override void Exit() { }
+
+        #endregion
+
+        #region Private methods
+
+        private IEnumerator EnterGameWithDelay()
+        {
+            yield return null;
+            StateMachine.Enter<GameState>();
+        }
 
         #endregion
     }
