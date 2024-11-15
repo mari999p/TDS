@@ -2,6 +2,7 @@ using System;
 using TDS.Infrastructure.Locator;
 using TDS.Utils.Log;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace TDS.Service.Mission
 {
@@ -33,6 +34,13 @@ namespace TDS.Service.Mission
 
         #region Public methods
 
+        public void Begin()
+        {
+            Assert.IsNotNull(_currentMission);
+            _currentMission.Begin();
+            OnStarted?.Invoke();
+        }
+
         public void Dispose()
         {
             if (_currentMission != null)
@@ -49,8 +57,6 @@ namespace TDS.Service.Mission
             MissionConditionHolder holder = FindObjectOfType<MissionConditionHolder>();
             _currentMission = _factory.Create(holder.MissionCondition);
             _currentMission.OnCompleted += MissionCompletedCallback;
-            _currentMission.Begin();
-            OnStarted?.Invoke();
         }
 
         #endregion

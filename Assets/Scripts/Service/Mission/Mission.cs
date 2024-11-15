@@ -10,6 +10,12 @@ namespace TDS.Service.Mission
 
         #endregion
 
+        #region Properties
+
+        public bool IsCompleted { get; private set; }
+
+        #endregion
+
         #region Public methods
 
         public void Begin()
@@ -33,6 +39,7 @@ namespace TDS.Service.Mission
 
         protected void InvokeCompletion()
         {
+            IsCompleted = true;
             OnCompleted?.Invoke();
         }
 
