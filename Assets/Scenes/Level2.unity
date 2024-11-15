@@ -232,6 +232,7 @@ MonoBehaviour:
   _movementAgro: {fileID: 88635273}
   _attackAgro: {fileID: 88635272}
   _animation: {fileID: 789989321}
+  _pickUpService: {fileID: 0}
 --- !u!114 &88635270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,6 +299,9 @@ MonoBehaviour:
   _stopChasingObserver: {fileID: 0}
   _idle: {fileID: 88635268}
   _movement: {fileID: 88635274}
+  _obstacleMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &88635274
 MonoBehaviour:
   m_ObjectHideFlags: 0
