@@ -20,7 +20,7 @@ namespace TDS.Game.PickUps
             if (other.CompareTag(Tag.Player))
             {
                 Debug.Log("Аптечка подобрана");
-                other.gameObject.GetComponent<PlayerHp>().Heal(_healthAmount);
+                other.gameObject.GetComponent<PlayerDeath>().Heal(_healthAmount);
             }
         }
 
