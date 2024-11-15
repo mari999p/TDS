@@ -57,5 +57,10 @@ namespace TDS.Game.Player
         }
 
         #endregion
+
+        public void Deactivate()
+        {
+            enabled = false;
+        }
     }
 }
