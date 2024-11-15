@@ -1,17 +1,18 @@
 using System.Collections;
+using TDS.Infrastructure.Locator;
 using TDS.Service.Coroutine;
 using TDS.Service.SceneLoading;
 
 namespace TDS.Infrastructure.State
 {
-    public class LoadGameState : AppState
+    public class LoadGameState : PayloadAppState<string>
     {
         #region Public methods
 
-        public override void Enter()
+        public override void Enter(string sceneName)
         {
             SceneLoaderService sceneLoaderService = ServicesLocator.Get<SceneLoaderService>();
-            sceneLoaderService.Load(SceneName.Game);
+            sceneLoaderService.Load(sceneName);
 
             ServicesLocator.Get<CoroutineRunner>().StartCoroutine(EnterGameWithDelay());
         }

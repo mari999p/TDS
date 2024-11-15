@@ -19,7 +19,7 @@ namespace TDS.Infrastructure.State
             ServicesLocator.RegisterMono<PickUpService>();
             ServicesLocator.RegisterMono<MissionService>();
 
-            StateMachine.Enter<LoadGameState>();
+            StateMachine.Enter<LoadGameState, string>(SceneName.Game);
         }
 
         public override void Exit() { }
