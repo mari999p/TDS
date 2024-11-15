@@ -22,6 +22,7 @@ namespace TDS.Game.Common
         #region Properties
 
         public int Current => _current;
+        public int Max => _max;
 
         #endregion
 
