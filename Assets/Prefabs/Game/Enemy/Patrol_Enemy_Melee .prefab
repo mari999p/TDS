@@ -156,6 +156,9 @@ MonoBehaviour:
   _stopChasingObserver: {fileID: 0}
   _idle: {fileID: 5233030169411163528}
   _movement: {fileID: 1100826938501427694}
+  _obstacleMask:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!114 &6976179772598702847
 MonoBehaviour:
   m_ObjectHideFlags: 0
