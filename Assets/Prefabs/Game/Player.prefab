@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4958903856003025363}
   - component: {fileID: 6651280526164088956}
+  - component: {fileID: 3017666197107874030}
   - component: {fileID: 5720802480826542373}
   - component: {fileID: 7846041595570559084}
   - component: {fileID: 9220933395873716651}
@@ -84,6 +85,23 @@ MonoBehaviour:
   _animation: {fileID: 8241069347350908924}
   _rb: {fileID: 9220933395873716651}
   _speed: 10
+--- !u!114 &3017666197107874030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2759796544306873766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6256290cb13a47dca76a742b7be79d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hp: {fileID: 7846041595570559084}
+  _currentHealth: 50
+  _movement: {fileID: 6651280526164088956}
+  _attack: {fileID: 5720802480826542373}
+  _animation: {fileID: 8241069347350908924}
 --- !u!114 &5720802480826542373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,8 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e95c4b2a1cc4f068ed08b8ecc4c6f5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _start: 10
-  _max: 10
+  _start: 50
+  _max: 50
   _current: 0
 --- !u!50 &9220933395873716651
 Rigidbody2D:
