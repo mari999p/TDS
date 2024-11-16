@@ -28,6 +28,15 @@ namespace TDS.Game.Player
 
         #endregion
 
+        #region Public methods
+
+        public void Deactivate()
+        {
+            enabled = false;
+        }
+
+        #endregion
+
         #region Private methods
 
         private void Fire()
@@ -37,10 +46,5 @@ namespace TDS.Game.Player
         }
 
         #endregion
-
-        public void Deactivate()
-        {
-            enabled = false;
-        }
     }
 }

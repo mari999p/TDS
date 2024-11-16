@@ -78,7 +78,5 @@ namespace TDS.Game.Player
         }
 
         #endregion
-
-      
     }
 }
