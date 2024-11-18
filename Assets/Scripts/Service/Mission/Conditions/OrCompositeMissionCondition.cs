@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace TDS.Service.Mission.Conditions
 {
-    public class OrCompositeMissionCondition: MissionCondition
+    public class OrCompositeMissionCondition : MissionCondition
     {
         #region Variables
 
