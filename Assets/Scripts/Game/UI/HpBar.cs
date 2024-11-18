@@ -51,6 +51,7 @@ namespace TDS.Game.UI
             if (_unitHp != null)
             {
                 _unitHp.OnChanged += HpChangedCallback;
+                
             }
         }
 

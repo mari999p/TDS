@@ -23,7 +23,7 @@ namespace TDS.Service.Mission
                 killEnemyMission.SetCondition(killEnemyMissionCondition);
                 return killEnemyMission;
             }
-            
+
             if (condition is OrCompositeMissionCondition orCompositeMissionCondition)
             {
                 OrCompositeMission orCompositeMission = new();

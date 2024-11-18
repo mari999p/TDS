@@ -1,5 +1,4 @@
 using System.Collections;
-using TDS.Infrastructure.Locator;
 using TDS.Service.Coroutine;
 using TDS.Service.SceneLoading;
 
