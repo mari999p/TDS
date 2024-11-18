@@ -28,6 +28,12 @@ namespace TDS.Service.Mission.ConcreteMissions
 
         #region Private methods
 
+        private void LoadNextLevel()
+        {
+            SceneLoaderService sceneLoaderService = ServicesLocator.Instance.Get<SceneLoaderService>();
+            sceneLoaderService.Load(Condition.NextLevelName);
+        }
+
         private void ObserverEnteredCallback(Collider2D col)
         {
             if (col.CompareTag(Tag.Player))
@@ -35,11 +41,6 @@ namespace TDS.Service.Mission.ConcreteMissions
                 InvokeCompletion();
                 LoadNextLevel();
             }
-        }
-        private void LoadNextLevel()
-        {
-            SceneLoaderService sceneLoaderService = ServicesLocator.Instance.Get<SceneLoaderService>();
-            sceneLoaderService.Load(Condition.NextLevelName);
         }
 
         #endregion
