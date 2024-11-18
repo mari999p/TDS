@@ -6,11 +6,12 @@ using UnityEngine.UI;
 
 namespace TDS.UI
 {
-    public class GameOverScreen : MonoBehaviour
+    public class GameOverScreen : MonoBehaviour //2
     {
         #region Variables
 
         [SerializeField] private PlayerDeath _playerDeath;
+        [SerializeField] private GameObject _gameOverPanel;
         [SerializeField] private Button _retryButton;
 
         [SerializeField] private string _currentSceneName;
@@ -22,7 +23,7 @@ namespace TDS.UI
         private void OnEnable()
         {
             _playerDeath.OnDeathOccurred += ShowRetryButton;
-            _retryButton.gameObject.SetActive(false);
+            _gameOverPanel.SetActive(false);
             _retryButton.onClick.AddListener(RetryLevel);
         }
 
@@ -38,12 +39,13 @@ namespace TDS.UI
 
         private void RetryLevel()
         {
-            ServicesLocator.Instance.Get<SceneLoaderService>().RetrySceneWithDelay(_currentSceneName);
+            SceneLoaderService sceneLoaderService = ServicesLocator.Instance.Get<SceneLoaderService>();
+            sceneLoaderService.Load(_currentSceneName);
         }
 
         private void ShowRetryButton()
         {
-            _retryButton.gameObject.SetActive(true);
+            _gameOverPanel.SetActive(true);
         }
 
         #endregion
