@@ -1,6 +1,6 @@
 using TDS.Game.Player;
 using TDS.Infrastructure.Locator;
-using TDS.Service.SceneLoading;
+using TDS.Infrastructure.State;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -39,8 +39,8 @@ namespace TDS.UI
 
         private void RetryLevel()
         {
-            SceneLoaderService sceneLoaderService = ServicesLocator.Instance.Get<SceneLoaderService>();
-            sceneLoaderService.Load(_currentSceneName);
+            StateMachine stateMachine = ServicesLocator.Instance.Get<StateMachine>();
+            stateMachine.Enter<LoadGameState, string>(_currentSceneName);
         }
 
         private void ShowRetryButton()
