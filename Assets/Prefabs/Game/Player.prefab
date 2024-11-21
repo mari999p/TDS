@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hp: {fileID: 7846041595570559084}
+  _collider: {fileID: 5432276790705395069}
   _currentHealth: 50
   _movement: {fileID: 6651280526164088956}
   _attack: {fileID: 5720802480826542373}
