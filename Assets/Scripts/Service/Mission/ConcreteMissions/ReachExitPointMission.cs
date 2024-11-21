@@ -1,7 +1,5 @@
 using TDS.Game;
-using TDS.Infrastructure.Locator;
 using TDS.Service.Mission.Conditions;
-using TDS.Service.SceneLoading;
 using UnityEngine;
 
 namespace TDS.Service.Mission.ConcreteMissions
@@ -28,18 +26,11 @@ namespace TDS.Service.Mission.ConcreteMissions
 
         #region Private methods
 
-        private void LoadNextLevel()
-        {
-            SceneLoaderService sceneLoaderService = ServicesLocator.Instance.Get<SceneLoaderService>();
-            sceneLoaderService.Load(Condition.NextLevelName);
-        }
-
         private void ObserverEnteredCallback(Collider2D col)
         {
             if (col.CompareTag(Tag.Player))
             {
                 InvokeCompletion();
-                LoadNextLevel();
             }
         }
 
