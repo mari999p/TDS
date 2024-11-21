@@ -1,6 +1,7 @@
 using TDS.Service.Coroutine;
 using TDS.Service.Mission;
 using TDS.Service.PickUp;
+using TDS.Service.Restart;
 using TDS.Service.SceneLoading;
 using TDS.Utils.Log;
 
@@ -18,6 +19,7 @@ namespace TDS.Infrastructure.State
             ServicesLocator.RegisterMono<CoroutineRunner>();
             ServicesLocator.RegisterMono<PickUpService>();
             ServicesLocator.RegisterMono<MissionService>();
+            ServicesLocator.Register(new RestartService());
 
             StateMachine.Enter<LoadGameState, string>(SceneName.Game);
         }
