@@ -1,20 +1,19 @@
 using TDS.Game.Player;
 using TDS.Infrastructure.Locator;
-using TDS.Infrastructure.State;
+using TDS.Service.Restart;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace TDS.UI
 {
-    public class GameOverScreen : MonoBehaviour //2
+    public class GameOverScreen : MonoBehaviour
     {
         #region Variables
 
         [SerializeField] private PlayerDeath _playerDeath;
         [SerializeField] private GameObject _gameOverPanel;
         [SerializeField] private Button _retryButton;
-
-        [SerializeField] private string _currentSceneName;
 
         #endregion
 
@@ -39,8 +38,8 @@ namespace TDS.UI
 
         private void RetryLevel()
         {
-            StateMachine stateMachine = ServicesLocator.Instance.Get<StateMachine>();
-            stateMachine.Enter<LoadGameState, string>(_currentSceneName);
+            RestartService restartService = ServicesLocator.Instance.Get<RestartService>();
+            restartService.Restart(SceneManager.GetActiveScene().name);
         }
 
         private void ShowRetryButton()
