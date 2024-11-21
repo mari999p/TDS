@@ -19,7 +19,7 @@ namespace TDS.Game.Player
 
         #region Events
 
-        public event Action OnDeathOccurred;
+        public event Action OnOccurred;
 
         #endregion
 
@@ -66,7 +66,7 @@ namespace TDS.Game.Player
             _animation.TriggerDeath();
             _movement.Deactivate();
             _attack.Deactivate();
-            OnDeathOccurred?.Invoke();
+            OnOccurred?.Invoke();
         }
 
         private void HpChangedCallback(int hp)

@@ -21,14 +21,14 @@ namespace TDS.UI
 
         private void OnEnable()
         {
-            _playerDeath.OnDeathOccurred += ShowRetryButton;
+            _playerDeath.OnOccurred += ShowRetryButton;
             _gameOverPanel.SetActive(false);
             _retryButton.onClick.AddListener(RetryLevel);
         }
 
         private void OnDisable()
         {
-            _playerDeath.OnDeathOccurred -= ShowRetryButton;
+            _playerDeath.OnOccurred -= ShowRetryButton;
             _retryButton.onClick.RemoveListener(RetryLevel);
         }
 
