@@ -9,6 +9,7 @@ namespace TDS.Game.Player
         #region Variables
 
         [SerializeField] private UnitHp _hp;
+        [SerializeField] private Collider2D _collider;
         [SerializeField] private int _currentHealth;
         [SerializeField] private PlayerMovement _movement;
         [SerializeField] private PlayerAttack _attack;
@@ -61,6 +62,7 @@ namespace TDS.Game.Player
         private void Die()
         {
             IsDead = true;
+            _collider.enabled = false;
             _animation.TriggerDeath();
             _movement.Deactivate();
             _attack.Deactivate();
