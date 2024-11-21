@@ -62,6 +62,8 @@ namespace TDS.Game.Enemy.Base
 
             Gizmos.DrawLine(transform.position, transform.position + leftBoundary * _viewDistance);
             Gizmos.DrawLine(transform.position, transform.position + rightBoundary * _viewDistance);
+
+            Gizmos.color = Color.cyan;
             Gizmos.DrawWireSphere(transform.position, _viewDistance);
 
             Gizmos.color = Color.yellow;
@@ -84,7 +86,7 @@ namespace TDS.Game.Enemy.Base
             _idle.Activate();
         }
 
-        private void TriggerStayedCallback(Collider2D col) //3
+        private void TriggerStayedCallback(Collider2D col)
         {
             if (_isFollowing || !col.CompareTag(Tag.Player))
             {
@@ -94,9 +96,8 @@ namespace TDS.Game.Enemy.Base
             Vector3 directionToPlayer = (col.transform.position - transform.position).normalized;
             float distanceToPlayer = (col.transform.position - transform.position).magnitude;
             Vector3 initialDirection = Quaternion.Euler(0, 0, _initialDirectionAngle) * transform.right;
-            if (distanceToPlayer <= _noticeDistance ||
-                (Vector3.Angle(initialDirection, directionToPlayer) <= _viewAngle / 2 &&
-                 distanceToPlayer <= _viewDistance))
+
+            if (IsPlayerNoticed())
             {
                 RaycastHit2D hit =
                     Physics2D.Raycast(transform.position, directionToPlayer, _viewDistance, _obstacleMask);
@@ -109,6 +110,13 @@ namespace TDS.Game.Enemy.Base
                 _idle.Deactivate();
                 _movement.Activate();
                 _movement.SetTarget(col.transform);
+            }
+
+            bool IsPlayerNoticed()
+            {
+                return distanceToPlayer <= _noticeDistance ||
+                       (Vector3.Angle(initialDirection, directionToPlayer) <= _viewAngle / 2 &&
+                        distanceToPlayer <= _viewDistance);
             }
         }
 
