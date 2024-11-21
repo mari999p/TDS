@@ -15,7 +15,7 @@ namespace TDS.Game.UI
 
         #region Unity lifecycle
 
-        private void Awake()
+        private void Start()
         {
             if (_unitHp == null)
             {
