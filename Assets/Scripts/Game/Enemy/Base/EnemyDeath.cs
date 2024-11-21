@@ -1,6 +1,6 @@
 using System;
 using TDS.Game.Common;
-using TDS.Service.PickUp;
+using TDS.Game.UI;
 using UnityEngine;
 
 namespace TDS.Game.Enemy.Base
@@ -17,7 +17,8 @@ namespace TDS.Game.Enemy.Base
         [SerializeField] private EnemyMovementAgro _movementAgro;
         [SerializeField] private EnemyAttackAgro _attackAgro;
         [SerializeField] private EnemyAnimation _animation;
-        [SerializeField] private PickUpService _pickUpService;
+        // private PickUpService _pickUpService;
+        [SerializeField] private HpBar _hpBar;
 
         #endregion
 
@@ -34,6 +35,11 @@ namespace TDS.Game.Enemy.Base
         #endregion
 
         #region Unity lifecycle
+
+        // private void Start()
+        // {
+        //     _pickUpService = ServicesLocator.Instance.Get<PickUpService>();
+        // }
 
         private void OnEnable()
         {
@@ -62,7 +68,8 @@ namespace TDS.Game.Enemy.Base
             _animation.PlayDeath();
 
             OnHappened?.Invoke();
-            _pickUpService.TrySpawnPickup(transform.position);
+            // _pickUpService.TrySpawnPickup(transform.position);
+            OnEnemyDeath();
         }
 
         private void HpChangedCallback(int hp)
@@ -73,6 +80,11 @@ namespace TDS.Game.Enemy.Base
             }
 
             Die();
+        }
+
+        private void OnEnemyDeath()
+        {
+            _hpBar.gameObject.SetActive(false);
         }
 
         #endregion

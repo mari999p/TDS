@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using TDS.Infrastructure.Locator;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace TDS.Service.PickUp
@@ -46,10 +45,10 @@ namespace TDS.Service.PickUp
         {
             #region Variables
 
-            [FormerlySerializedAs("Name")] [HideInInspector]
+            [HideInInspector]
             public string name;
             public Game.PickUps.PickUp pickUpPrefab;
-            [FormerlySerializedAs("Probability")]
+
             [Range(0f, 100f)]
             public float probability;
 
