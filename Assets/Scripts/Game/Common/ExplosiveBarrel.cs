@@ -1,8 +1,9 @@
+using Lean.Pool;
 using UnityEngine;
 
 namespace TDS.Game.Common
 {
-    public class ExplosiveBarrel : MonoBehaviour, IDamageable
+    public class ExplosiveBarrel : MonoBehaviour, IDamageable,IPoolable
     {
         #region Variables
 
@@ -57,7 +58,7 @@ namespace TDS.Game.Common
         {
             if (_explosionEffect != null)
             {
-                Instantiate(_explosionEffect, transform.position, Quaternion.identity);
+                LeanPool.Spawn(_explosionEffect, transform.position, Quaternion.identity);
             }
 
             Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, _explosionRadius, _layerMask);
@@ -76,7 +77,7 @@ namespace TDS.Game.Common
 
             if (_burningEffect != null)
             {
-                Instantiate(_burningEffect, transform.position, Quaternion.identity);
+                LeanPool.Spawn(_burningEffect, transform.position, Quaternion.identity);
             }
 
             Destroy(this);
@@ -95,5 +96,15 @@ namespace TDS.Game.Common
         }
 
         #endregion
+
+        public void OnSpawn()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnDespawn()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

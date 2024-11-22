@@ -1,3 +1,4 @@
+using Lean.Pool;
 using TDS.Game.Player;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace TDS.Game.PickUps
 
         [Header(nameof(HealthPack))]
         [SerializeField] private int _healthAmount = 20;
+     
 
         #endregion
 
@@ -21,9 +23,11 @@ namespace TDS.Game.PickUps
             {
                 Debug.Log("Аптечка подобрана");
                 other.gameObject.GetComponent<PlayerDeath>().Heal(_healthAmount);
+             
             }
         }
 
         #endregion
+        
     }
 }

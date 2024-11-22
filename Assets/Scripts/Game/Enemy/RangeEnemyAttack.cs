@@ -37,7 +37,7 @@ namespace TDS.Game.Enemy
         {
             base.OnPerformAttack();
 
-           LeanPool.Spawn(_bulletPrefab, _spawnPointTransform.position, _spawnPointTransform.rotation);
+            LeanPool.Spawn(_bulletPrefab, _spawnPointTransform.position, _spawnPointTransform.rotation);
         }
 
         #endregion
