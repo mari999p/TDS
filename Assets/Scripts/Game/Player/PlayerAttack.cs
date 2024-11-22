@@ -14,6 +14,7 @@ namespace TDS.Game.Player
         [Header("Settings")]
         [SerializeField] private Bullet _bulletPrefab;
         [SerializeField] private Transform _spawnPointTransform;
+        [SerializeField] private PlayerAmmo _playerAmmo;
 
         #endregion
 
@@ -42,8 +43,12 @@ namespace TDS.Game.Player
 
         private void Fire()
         {
-            _animation.TriggerAttack();
-            LeanPool.Spawn(_bulletPrefab, _spawnPointTransform.position, _spawnPointTransform.rotation);
+            if (_playerAmmo.TryToShoot()) 
+            {
+                _animation.TriggerAttack();
+                LeanPool.Spawn(_bulletPrefab, _spawnPointTransform.position, _spawnPointTransform.rotation);
+                _playerAmmo.AddAmmo(-1); 
+            }
         }
 
         #endregion
