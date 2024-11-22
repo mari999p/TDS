@@ -1,10 +1,11 @@
 using System.Collections;
+using Lean.Pool;
 using TDS.Game.Common;
 using UnityEngine;
 
 namespace TDS.Game.Player
 {
-    public class Bullet : MonoBehaviour
+    public class Bullet : MonoBehaviour, IPoolable
     {
         #region Variables
 
@@ -17,21 +18,30 @@ namespace TDS.Game.Player
 
         #region Unity lifecycle
 
-        private void Start()
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.TryGetComponent(out UnitHp hp))
+            {
+                hp.Change(-_damage);
+            }
+
+            LeanPool.Despawn(gameObject);
+        }
+
+        #endregion
+
+        #region IPoolable
+
+        public void OnSpawn()
         {
             _rb.velocity = transform.up * _speed;
 
             StartCoroutine(DestroyWithLifetimeDelay());
         }
 
-        private void OnTriggerEnter2D(Collider2D other)
+        public void OnDespawn()
         {
-            if (other.TryGetComponent(out IDamageable hp))
-            {
-                hp.ApplyDamage(_damage);
-            }
-
-            Destroy(gameObject);
+            _rb.velocity = Vector2.zero;
         }
 
         #endregion
@@ -42,7 +52,7 @@ namespace TDS.Game.Player
         {
             yield return new WaitForSeconds(_lifetime);
 
-            Destroy(gameObject);
+            LeanPool.Despawn(gameObject);
         }
 
         #endregion
