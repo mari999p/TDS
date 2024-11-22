@@ -1,6 +1,5 @@
 using System;
 using TDS.Infrastructure.Locator;
-using TDS.Utils.Log;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -65,7 +64,6 @@ namespace TDS.Service.Mission
 
         private void MissionCompletedCallback()
         {
-            this.Error();
             OnCompleted?.Invoke();
         }
 
