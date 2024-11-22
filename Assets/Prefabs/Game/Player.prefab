@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 3017666197107874030}
   - component: {fileID: 5720802480826542373}
   - component: {fileID: 7846041595570559084}
+  - component: {fileID: 7918752344079118931}
   - component: {fileID: 9220933395873716651}
   - component: {fileID: 5432276790705395069}
   m_Layer: 6
@@ -118,6 +119,7 @@ MonoBehaviour:
   _animation: {fileID: 8241069347350908924}
   _bulletPrefab: {fileID: 886631526498383515, guid: e80d9d5199499fe489946b673348150c, type: 3}
   _spawnPointTransform: {fileID: 5762514076285945454}
+  _playerAmmo: {fileID: 7918752344079118931}
 --- !u!114 &7846041595570559084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,7 +134,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _start: 50
   _max: 50
-  _current: 0
+  _current: 1
+--- !u!114 &7918752344079118931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2759796544306873766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a44ac872aa8745efabdb410e132615be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxAmmo: 100
+  _currentAmmo: 0
 --- !u!50 &9220933395873716651
 Rigidbody2D:
   serializedVersion: 4

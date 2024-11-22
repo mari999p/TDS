@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1023647198308982612}
   - component: {fileID: 7680884031104284121}
   - component: {fileID: 6878578563805124359}
+  - component: {fileID: 5346474760216442427}
   m_Layer: 12
   m_Name: ExplosiveBarrel
   m_TagString: Untagged
@@ -52,8 +53,8 @@ MonoBehaviour:
   _hitPoints: 2
   _explosionRadius: 7.13
   _explosionDamage: 1
-  _explosionEffect: {fileID: 5927938525918574479, guid: 607927dd658eb7441ab43371f16f0083, type: 3}
-  _burningEffect: {fileID: 8994881828856718977, guid: d8042b03411c3c74cae5b98a01ab6541, type: 3}
+  _explosionEffect: {fileID: 3204045776783233822, guid: 607927dd658eb7441ab43371f16f0083, type: 3}
+  _burningEffect: {fileID: 7288098266841228674, guid: d8042b03411c3c74cae5b98a01ab6541, type: 3}
   _layerMask:
     serializedVersion: 2
     m_Bits: 4288
@@ -92,6 +93,31 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.66
+--- !u!114 &5346474760216442427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2209701847987877088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eea08375da243a441b88d1e6b0713006, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 2209701847987877088}
+  notification: 3
+  strategy: 0
+  preload: 0
+  capacity: 0
+  recycle: 0
+  persist: 0
+  stamp: 0
+  warnings: 1
+  spawnedClonesList: []
+  despawnedClones: []
+  delays: []
+  deactivatedChild: {fileID: 0}
 --- !u!1 &3420622555849421739
 GameObject:
   m_ObjectHideFlags: 0
