@@ -1,5 +1,6 @@
 using TDS.Game.Common;
 using TDS.Game.Player;
+using TDS.Service.LevelCompletion;
 using TDS.Service.Mission;
 using TDS.UI;
 using TDS.Utils.Log;
@@ -14,6 +15,7 @@ namespace TDS.Infrastructure.State
         public override void Enter()
         {
             this.Log();
+            ServicesLocator.Get<LevelCompletionService>().Initialize();
             ServicesLocator.Get<MissionService>().Initialize();
             ServicesLocator.Get<MissionService>().Begin();
 
@@ -26,6 +28,7 @@ namespace TDS.Infrastructure.State
         public override void Exit()
         {
             ServicesLocator.Get<MissionService>().Dispose();
+            ServicesLocator.Get<LevelCompletionService>().Dispose();
         }
 
         #endregion

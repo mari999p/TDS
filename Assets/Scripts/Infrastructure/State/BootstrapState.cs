@@ -1,4 +1,6 @@
 using TDS.Service.Coroutine;
+using TDS.Service.LevelCompletion;
+using TDS.Service.LevelLoading;
 using TDS.Service.Mission;
 using TDS.Service.PickUp;
 using TDS.Service.Restart;
@@ -18,10 +20,14 @@ namespace TDS.Infrastructure.State
             ServicesLocator.Register(new SceneLoaderService());
             ServicesLocator.RegisterMono<CoroutineRunner>();
             ServicesLocator.RegisterMono<PickUpService>();
-            ServicesLocator.RegisterMono<MissionService>();
+            MissionService missionService = ServicesLocator.RegisterMono<MissionService>();
+            LevelLoadingService levelLoadingService = new(ServicesLocator.Get<StateMachine>());
+            ServicesLocator.Register(levelLoadingService);
+            ServicesLocator.Register(new LevelCompletionService(missionService, levelLoadingService));
             ServicesLocator.Register(new RestartService());
 
-            StateMachine.Enter<LoadGameState, string>(SceneName.Game);
+            levelLoadingService.Initialize();
+            levelLoadingService.EnterFirstLevel();
         }
 
         public override void Exit() { }
