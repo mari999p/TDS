@@ -43,7 +43,7 @@ namespace CartoonFX
 
 			List<Token> polishNotation = Token.TransformToPolishNotation(tokens);
 
-			var enumerator = polishNotation.GetEnumerator();
+			List<Token>.Enumerator enumerator = polishNotation.GetEnumerator();
 			enumerator.MoveNext();
 			Expression root = MakeExpression(ref enumerator, evalFunction);
 
@@ -152,7 +152,7 @@ namespace CartoonFX
 					outputQueue.Enqueue(stack.Pop());
 				}
 
-				var list = new List<Token>(outputQueue);
+				List<Token> list = new List<Token>(outputQueue);
 				list.Reverse();
 				return list;
 			}

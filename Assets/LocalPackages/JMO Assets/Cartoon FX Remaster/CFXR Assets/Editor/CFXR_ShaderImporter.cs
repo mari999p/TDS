@@ -24,7 +24,7 @@ namespace CartoonFX
             public static bool IsUsingURP()
             {
 #if UNITY_2019_3_OR_NEWER
-                var renderPipeline = GraphicsSettings.currentRenderPipeline;
+                RenderPipelineAsset renderPipeline = GraphicsSettings.currentRenderPipeline;
 #else
                 var renderPipeline = GraphicsSettings.renderPipelineAsset;
 #endif
@@ -164,7 +164,7 @@ namespace CartoonFX
                             string version = subline.Substring(spaceIndex, subline.LastIndexOf(' ') - spaceIndex);
                             string op = subline.Substring(0, spaceIndex);
 
-                            var compOp = ParseComparisonOperator(op);
+                            ComparisonOperator compOp = ParseComparisonOperator(op);
                             int compVersion = int.Parse(version);
 
                             bool isCorrectURP = CompareWithOperator(URP_VERSION, compVersion, compOp);
@@ -203,7 +203,7 @@ namespace CartoonFX
                 if (ShaderUtil.ShaderHasError(shader))
                 {
                     string[] shaderSourceLines = shaderSourceCode.Split(new [] {'\n'}, StringSplitOptions.None);
-                    var errors = ShaderUtil.GetShaderMessages(shader);
+                    ShaderMessage[] errors = ShaderUtil.GetShaderMessages(shader);
                     shaderErrors = Array.ConvertAll(errors, err => $"{err.message} (line {err.line})");
                     foreach (ShaderMessage error in errors)
                     {
@@ -339,7 +339,7 @@ namespace CartoonFX
                     if (Importer.shaderErrors != null && Importer.shaderErrors.Length > 0)
                     {
                         GUILayout.Space(4);
-                        var color = GUI.color;
+                        Color color = GUI.color;
                         GUI.color = new Color32(0xFF, 0x80, 0x80, 0xFF);
                         GUILayout.Label($"<b>Errors:</b>\n{string.Join("\n", Importer.shaderErrors)}", HelpBoxRichTextStyle);
                         GUI.color = color;

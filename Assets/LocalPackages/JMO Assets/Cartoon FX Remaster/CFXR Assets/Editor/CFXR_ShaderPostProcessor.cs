@@ -15,14 +15,14 @@ namespace CartoonFX
 
             static void CleanCFXRShaders(string[] paths)
             {
-                foreach (var assetPath in paths)
+                foreach (string assetPath in paths)
                 {
                     if (!assetPath.EndsWith(CFXR_ShaderImporter.FILE_EXTENSION, StringComparison.InvariantCultureIgnoreCase))
                     {
                         continue;
                     }
 
-                    var shader = AssetDatabase.LoadMainAssetAtPath(assetPath) as Shader;
+                    Shader shader = AssetDatabase.LoadMainAssetAtPath(assetPath) as Shader;
                     if (shader != null)
                     {
                         ShaderUtil.ClearShaderMessages(shader);

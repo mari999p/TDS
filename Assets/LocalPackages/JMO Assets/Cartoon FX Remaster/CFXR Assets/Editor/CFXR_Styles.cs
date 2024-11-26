@@ -28,7 +28,7 @@ namespace CartoonFX
 					//Try to load GUISkin according to its GUID
 					//Assumes that its .meta file should always stick with it!
 					string guiSkinPath = AssetDatabase.GUIDToAssetPath("02d396fa782e5d7438e231ea9f8be23c");
-					var gs = AssetDatabase.LoadAssetAtPath<GUISkin>(guiSkinPath);
+					GUISkin gs = AssetDatabase.LoadAssetAtPath<GUISkin>(guiSkinPath);
 					if(gs != null)
 					{
 						_closeCrossButton = System.Array.Find<GUIStyle>(gs.customStyles, x => x.name == "CloseCrossButton");
@@ -56,7 +56,7 @@ namespace CartoonFX
 					_shurikenToggle.contentOffset = new Vector2(16, -1);
 					if(EditorGUIUtility.isProSkin)
 					{
-						var textColor = new Color(.8f, .8f, .8f);
+						Color textColor = new Color(.8f, .8f, .8f);
 						_shurikenToggle.normal.textColor = textColor;
 						_shurikenToggle.active.textColor = textColor;
 						_shurikenToggle.focused.textColor = textColor;
@@ -254,7 +254,7 @@ namespace CartoonFX
 
 		static public void DrawRectangle(Rect position, Color color)
 		{
-			var col = GUI.color;
+			Color col = GUI.color;
 			GUI.color *= color;
 			DrawRectangle(position);
 			GUI.color = col;
@@ -299,7 +299,7 @@ namespace CartoonFX
 
 		static public void MaterialDrawHeader(GUIContent guiContent)
 		{
-			var rect = GUILayoutUtility.GetRect(guiContent, MaterialHeaderStyle);
+			Rect rect = GUILayoutUtility.GetRect(guiContent, MaterialHeaderStyle);
 			GUI.Label(rect, guiContent, MaterialHeaderStyleHighlight);
 			GUI.Label(rect, guiContent, MaterialHeaderStyle);
 		}

@@ -57,16 +57,16 @@ namespace CartoonFX
 				//Find the shader and parse the source to find special comments that will organize the GUI
 				//It's hackish, but at least it allows any character to be used (unlike material property drawers/decorators) and can be used along with property drawers
 
-				var materials = new List<Material>();
-				foreach(var o in editor.targets)
+				List<Material> materials = new List<Material>();
+				foreach(Object o in editor.targets)
 				{
-					var m = o as Material;
+					Material m = o as Material;
 					if(m != null)
 						materials.Add(m);
 				}
 				if(materials.Count > 0 && materials[0].shader != null)
 				{
-					var path = AssetDatabase.GetAssetPath(materials[0].shader);
+					string path = AssetDatabase.GetAssetPath(materials[0].shader);
 					//get asset importer
 					shaderImporter = AssetImporter.GetAtPath(path);
 					if(shaderImporter != null)
@@ -78,17 +78,17 @@ namespace CartoonFX
 					//convert to cross-platform path
 					path = path.Replace('/', Path.DirectorySeparatorChar);
 					//open file for reading
-					var lines = File.ReadAllLines(path);
+					string[] lines = File.ReadAllLines(path);
 
 					bool insideProperties = false;
 					//regex pattern to find properties, as they need to be counted so that
 					//special commands can be inserted at the right position when enumerating them
-					var regex = new Regex(@"[a-zA-Z0-9_]+\s*\([^\)]*\)");
+					Regex regex = new Regex(@"[a-zA-Z0-9_]+\s*\([^\)]*\)");
 					int propertyCount = 0;
 					bool insideCommentBlock = false;
-					foreach(var l in lines)
+					foreach(string l in lines)
 					{
-						var line = l.TrimStart();
+						string line = l.TrimStart();
 
 						if(insideProperties)
 						{
@@ -119,13 +119,13 @@ namespace CartoonFX
 								//if keyword
 								else if(command.StartsWith(kGC_IfKeyword))
 								{
-									var expr = command.Substring(command.LastIndexOf(kGC_IfKeyword) + kGC_IfKeyword.Length + 1);
+									string expr = command.Substring(command.LastIndexOf(kGC_IfKeyword) + kGC_IfKeyword.Length + 1);
 									AddGUICommand(propertyCount, new GC_IfKeyword() { expression = expr, materials = materials.ToArray() });
 								}
 								//if property
 								else if(command.StartsWith(kGC_IfProperty))
 								{
-									var expr = command.Substring(command.LastIndexOf(kGC_IfProperty) + kGC_IfProperty.Length + 1);
+									string expr = command.Substring(command.LastIndexOf(kGC_IfProperty) + kGC_IfProperty.Length + 1);
 									AddGUICommand(propertyCount, new GC_IfProperty() { expression = expr, materials = materials.ToArray() });
 								}
 								//end if
@@ -136,9 +136,9 @@ namespace CartoonFX
 								//help box
 								else if(command.StartsWith(kGC_HelpBox))
 								{
-									var messageType = MessageType.Error;
-									var message = "Invalid format for HELP_BOX:\n" + command;
-									var cmd = command.Substring(command.LastIndexOf(kGC_HelpBox) + kGC_HelpBox.Length + 1).Split(new string[] { "::" }, System.StringSplitOptions.RemoveEmptyEntries);
+									MessageType messageType = MessageType.Error;
+									string message = "Invalid format for HELP_BOX:\n" + command;
+									string[] cmd = command.Substring(command.LastIndexOf(kGC_HelpBox) + kGC_HelpBox.Length + 1).Split(new string[] { "::" }, System.StringSplitOptions.RemoveEmptyEntries);
 									if(cmd.Length == 1)
 									{
 										message = cmd[0];
@@ -148,7 +148,7 @@ namespace CartoonFX
 									{
 										try
 										{
-											var msgType = (MessageType)System.Enum.Parse(typeof(MessageType), cmd[0], true);
+											MessageType msgType = (MessageType)System.Enum.Parse(typeof(MessageType), cmd[0], true);
 											message = cmd[1].Replace("  ", "\n");
 											messageType = msgType;
 										}
@@ -164,7 +164,7 @@ namespace CartoonFX
 								//label
 								else if(command.StartsWith(kGC_Label))
 								{
-									var label = command.Substring(command.LastIndexOf(kGC_Label) + kGC_Label.Length + 1);
+									string label = command.Substring(command.LastIndexOf(kGC_Label) + kGC_Label.Length + 1);
 									AddGUICommand(propertyCount, new GC_Label() { label = label });
 								}
 								//header: plain text after command
@@ -213,7 +213,7 @@ namespace CartoonFX
 			bool force = (shaderImporter != null && shaderImporter.assetTimeStamp != lastTimestamp);
 			Initialize(materialEditor, force);
 
-			var shader = (materialEditor.target as Material).shader;
+			Shader shader = (materialEditor.target as Material).shader;
 			materialEditor.SetDefaultGUIWidths();
 
 			//show all properties by default
@@ -372,7 +372,7 @@ namespace CartoonFX
 			EditorGUI.BeginChangeCheck();
 
 			EditorGUI.showMixedValue = prop.hasMixedValue;
-			var value = (int)prop.floatValue;
+			int value = (int)prop.floatValue;
 			value = EditorGUI.Popup(position, label, value, labels);
 			EditorGUI.showMixedValue = false;
 			if (EditorGUI.EndChangeCheck())
@@ -474,7 +474,7 @@ namespace CartoonFX
 		{
 			bool show = ExpressionParser.EvaluateExpression(expression, (string s) =>
 			{
-				foreach(var m in materials)
+				foreach(Material m in materials)
 				{
 					if(m.IsKeywordEnabled(s))
 						return true;
@@ -505,7 +505,7 @@ namespace CartoonFX
 		bool EvaluatePropertyExpression(string expr)
 		{
 			//expression is expected to be in the form of: property operator value
-			var reader = new StringReader(expr);
+			StringReader reader = new StringReader(expr);
 			string property = "";
 			string op = "";
 			float value = 0f;
@@ -528,7 +528,7 @@ namespace CartoonFX
 					}
 
 					//end of string is the value
-					var end = reader.ReadToEnd();
+					string end = reader.ReadToEnd();
 					if(!float.TryParse(end, out value))
 					{
 						Debug.LogError("Couldn't parse float from property expression:\n" + end);
@@ -551,7 +551,7 @@ namespace CartoonFX
 
 			//evaluate property
 			bool conditionMet = false;
-			foreach(var m in materials)
+			foreach(Material m in materials)
 			{
 				float propValue = 0f;
 				if(property.Contains(".x") || property.Contains(".y") || property.Contains(".z") || property.Contains(".w"))

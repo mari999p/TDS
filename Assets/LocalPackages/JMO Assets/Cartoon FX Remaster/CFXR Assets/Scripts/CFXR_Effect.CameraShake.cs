@@ -65,7 +65,7 @@ namespace CartoonFX
 				int count = s_CameraShakes.Count;
 				for (int i = 0; i < count; i++)
 				{
-					var ss = s_CameraShakes[i];
+					CameraShake ss = s_CameraShakes[i];
 					ss.onPreRenderCamera(cam);
 				}
 			}
@@ -75,7 +75,7 @@ namespace CartoonFX
 				int count = s_CameraShakes.Count;
 				for (int i = count-1; i >= 0; i--)
 				{
-					var ss = s_CameraShakes[i];
+					CameraShake ss = s_CameraShakes[i];
 					ss.onPostRenderCamera(cam);
 				}
 			}
@@ -187,7 +187,7 @@ namespace CartoonFX
 				}
 #endif
 
-				foreach (var cam in cameras)
+				foreach (Camera cam in cameras)
 				{
 					if (cam == null) continue;
 
@@ -201,7 +201,7 @@ namespace CartoonFX
 					cameras.Add(Camera.main);
 				}
 
-				foreach (var cam in cameras)
+				foreach (Camera cam in cameras)
 				{
 					if (cam == null) continue;
 
@@ -273,8 +273,8 @@ namespace CartoonFX
 						}
 					}
 
-					var randomVec = new Vector3(Random.value, Random.value, Random.value);
-					var shakeVec = Vector3.Scale(randomVec, shakeStrength) * (Random.value > 0.5f ? -1 : 1);
+					Vector3 randomVec = new Vector3(Random.value, Random.value, Random.value);
+					Vector3 shakeVec = Vector3.Scale(randomVec, shakeStrength) * (Random.value > 0.5f ? -1 : 1);
 					shakeVector = shakeVec * shakeCurve.Evaluate(delta) * GLOBAL_CAMERA_SHAKE_MULTIPLIER;
 				}
 				else if (isShaking)

@@ -468,7 +468,7 @@ namespace CartoonFX
 #if !DISABLE_LIGHTS
 			if (animatedLights != null)
 			{
-				foreach (var animLight in animatedLights)
+				foreach (AnimatedLight animLight in animatedLights)
 				{
 					animLight.reset();
 				}
@@ -506,7 +506,7 @@ namespace CartoonFX
 
 			void OnEnable()
 		{
-			foreach (var animLight in animatedLights)
+			foreach (AnimatedLight animLight in animatedLights)
 			{
 				if (animLight.light != null)
 				{
@@ -580,7 +580,7 @@ namespace CartoonFX
 #if !DISABLE_LIGHTS
 			if (animatedLights != null && !GlobalDisableLights)
 			{
-				foreach (var animLight in animatedLights)
+				foreach (AnimatedLight animLight in animatedLights)
 				{
 					animLight.animate(time);
 				}
@@ -618,7 +618,7 @@ namespace CartoonFX
 				fadingOutStartTime = time;
 			}
 
-			foreach (var animLight in animatedLights)
+			foreach (AnimatedLight animLight in animatedLights)
 			{
 				animLight.animateFadeOut(time - fadingOutStartTime);
 			}
@@ -654,8 +654,8 @@ namespace CartoonFX
 
 		public void RegisterEditorUpdate()
 		{
-			var type = PrefabUtility.GetPrefabAssetType(this.gameObject);
-			var status = PrefabUtility.GetPrefabInstanceStatus(this.gameObject);
+			PrefabAssetType type = PrefabUtility.GetPrefabAssetType(this.gameObject);
+			PrefabInstanceStatus status = PrefabUtility.GetPrefabInstanceStatus(this.gameObject);
 
 			// Prefab in Project window
 			if ((type == PrefabAssetType.Regular || type == PrefabAssetType.Variant) && status == PrefabInstanceStatus.NotAPrefab)
@@ -692,7 +692,7 @@ namespace CartoonFX
 				return;
 			}
 
-			var renderer = this.GetComponent<ParticleSystemRenderer>();
+			ParticleSystemRenderer renderer = this.GetComponent<ParticleSystemRenderer>();
 			if (renderer.sharedMaterial != null && renderer.sharedMaterial.IsKeywordEnabled("_CFXR_LIGHTING_WPOS_OFFSET"))
 			{
 				if (materialPropertyBlock == null)
@@ -830,9 +830,9 @@ namespace CartoonFX
 				return;
 			}
 
-			foreach (var t in this.targets)
+			foreach (Object t in this.targets)
 			{
-				var cfxr_effect = t as CFXR_Effect;
+				CFXR_Effect cfxr_effect = t as CFXR_Effect;
 				if (cfxr_effect != null)
 				{
 					if (isPrefabSource(cfxr_effect.gameObject))
@@ -851,10 +851,10 @@ namespace CartoonFX
 				return;
 			}
 
-			foreach (var t in this.targets)
+			foreach (Object t in this.targets)
 			{
 				// Can be null if GameObject has been destroyed
-				var cfxr_effect = t as CFXR_Effect;
+				CFXR_Effect cfxr_effect = t as CFXR_Effect;
 				if (cfxr_effect != null)
 				{
 					if (isPrefabSource(cfxr_effect.gameObject))
@@ -868,8 +868,8 @@ namespace CartoonFX
 
 		static bool isPrefabSource(GameObject gameObject)
 		{
-			var assetType = PrefabUtility.GetPrefabAssetType(gameObject);
-			var prefabType = PrefabUtility.GetPrefabInstanceStatus(gameObject);
+			PrefabAssetType assetType = PrefabUtility.GetPrefabAssetType(gameObject);
+			PrefabInstanceStatus prefabType = PrefabUtility.GetPrefabInstanceStatus(gameObject);
 			return ((assetType == PrefabAssetType.Regular || assetType == PrefabAssetType.Variant) && prefabType == PrefabInstanceStatus.NotAPrefab);
 		}
 	}
