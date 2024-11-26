@@ -49,3 +49,6 @@ MonoBehaviour:
   - name: 
     pickUpPrefab: {fileID: 351862976679519603, guid: 2baba5c1956d3e142a2afa164fa24de7, type: 3}
     probability: 100
+  - name: 
+    pickUpPrefab: {fileID: 3531977047421707869, guid: 992ac5b11c96df14c9a6b08c874f1024, type: 3}
+    probability: 100

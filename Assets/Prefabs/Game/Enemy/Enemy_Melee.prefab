@@ -575,7 +575,7 @@ MonoBehaviour:
   _hitMask:
     serializedVersion: 2
     m_Bits: 64
-  _damage: 1
+  _damage: 5
 --- !u!114 &2458613947827065668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -596,6 +596,7 @@ MonoBehaviour:
   _movementAgro: {fileID: 2292563754297684118}
   _attackAgro: {fileID: 2418071002135602907}
   _animation: {fileID: 766199078353008770}
+  _pickUpService: {fileID: 0}
   _hpBar: {fileID: 2851312286349790618}
 --- !u!50 &1330608037378835241
 Rigidbody2D:
@@ -656,7 +657,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -1.1}
   serializedVersion: 2
   m_Radius: 0.61
 --- !u!1 &5064888334942395008

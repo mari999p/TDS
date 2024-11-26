@@ -20,16 +20,28 @@ MonoBehaviour:
     GuidHex: 2c342dd0e678cd74895ffe0ce1b2e2d2
   NeedOpenSceneOnStop: 1
   StopScene:
-    Name: GameScene
+    Name: Level1
     Index: 1
-    Path: Assets/Scenes/GameScene.unity
+    Path: Assets/Scenes/Level1.unity
     GuidHex: 2cda990e2423bbf4892e6590ba056729
   AllScenes:
   - Name: BootstrapScene
     Index: 0
     Path: Assets/Scenes/BootstrapScene.unity
     GuidHex: 2c342dd0e678cd74895ffe0ce1b2e2d2
-  - Name: GameScene
+  - Name: Level1
     Index: 1
-    Path: Assets/Scenes/GameScene.unity
+    Path: Assets/Scenes/Level1.unity
     GuidHex: 2cda990e2423bbf4892e6590ba056729
+  - Name: Level2
+    Index: 2
+    Path: Assets/Scenes/Level2.unity
+    GuidHex: f19df5184f13d844ebcd69e768aaccb6
+  - Name: Level3
+    Index: 3
+    Path: Assets/Scenes/Level3.unity
+    GuidHex: 8f7820bc7038d38448268716b51299bd
+  - Name: GameOver
+    Index: 4
+    Path: Assets/Scenes/GameOver.unity
+    GuidHex: a09ad06a767e0104db770b0c388a1a9c
