@@ -55,7 +55,7 @@ namespace TDS.Service.LevelCompletion
             else
             {
                 _gameOverService.ShowGameOverScreen();
-                this.Error("GAME OVER!");
+                // this.Error("GAME OVER!");
             }
         }
 
