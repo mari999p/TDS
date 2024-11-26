@@ -56,7 +56,7 @@ namespace TDS.Game.UI
             if (_bossHp != null)
             {
                 _bossHp.OnBossDefeated -= BossDefeatedCallback;
-                _bossHp._hp.OnChanged -= HpChangedCallback;
+                _bossHp.hp.OnChanged -= HpChangedCallback;
             }
         }
 
@@ -68,13 +68,13 @@ namespace TDS.Game.UI
         private void Init()
         {
             _bossHp.OnBossDefeated += BossDefeatedCallback;
-            _bossHp._hp.OnChanged += HpChangedCallback;
+            _bossHp.hp.OnChanged += HpChangedCallback;
             UpdateUi();
         }
 
         private void UpdateUi()
         {
-            _slider.value = _bossHp._hp.Current / (float)_bossHp._hp.Max;
+            _slider.value = _bossHp.hp.Current / (float)_bossHp.hp.Max;
         }
 
         #endregion

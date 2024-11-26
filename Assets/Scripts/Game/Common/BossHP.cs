@@ -7,7 +7,7 @@ namespace TDS.Game.Common
     {
         #region Variables
 
-        [SerializeField] private UnitHp _hp;
+        public UnitHp hp;
 
         #endregion
 
@@ -21,7 +21,7 @@ namespace TDS.Game.Common
 
         private void Awake()
         {
-            _hp.OnChanged += CheckIfDefeated;
+            hp.OnChanged += CheckIfDefeated;
         }
 
         #endregion
@@ -30,7 +30,7 @@ namespace TDS.Game.Common
 
         public void ApplyDamage(int damage)
         {
-            _hp.ApplyDamage(damage);
+            hp.ApplyDamage(damage);
         }
 
         #endregion

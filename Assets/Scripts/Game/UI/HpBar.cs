@@ -1,7 +1,5 @@
 using TDS.Game.Common;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 using Slider = UnityEngine.UI.Slider;
 
 namespace TDS.Game.UI
@@ -53,7 +51,6 @@ namespace TDS.Game.UI
             if (_unitHp != null)
             {
                 _unitHp.OnChanged += HpChangedCallback;
-                
             }
         }
 

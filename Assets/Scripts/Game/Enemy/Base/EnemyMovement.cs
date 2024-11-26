@@ -1,3 +1,4 @@
+using Pathfinding;
 using UnityEngine;
 
 namespace TDS.Game.Enemy.Base
@@ -7,6 +8,7 @@ namespace TDS.Game.Enemy.Base
         #region Variables
 
         [SerializeField] private EnemyAnimation _animation;
+       
 
         #endregion
 
@@ -17,6 +19,8 @@ namespace TDS.Game.Enemy.Base
         #endregion
 
         #region Public methods
+
+       
 
         public abstract void SetTarget(Transform target);
 

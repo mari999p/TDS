@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace TDS.Game.Common
 {
-    public class ExplosiveBarrel : MonoBehaviour, IDamageable,IPoolable
+    public class ExplosiveBarrel : MonoBehaviour, IDamageable
     {
         #region Variables
 
@@ -96,15 +96,5 @@ namespace TDS.Game.Common
         }
 
         #endregion
-
-        public void OnSpawn()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void OnDespawn()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

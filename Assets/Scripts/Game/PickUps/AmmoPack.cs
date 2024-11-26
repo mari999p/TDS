@@ -19,12 +19,10 @@ namespace TDS.Game.PickUps
             base.PerformActions(other);
             if (other.CompareTag(Tag.Player))
             {
-                Debug.Log("Ящик с патронами подобран");
+                Debug.Log("Патроны подобраны");
                 PlayerAmmo playerAmmo = other.GetComponent<PlayerAmmo>();
-                if (playerAmmo != null)
-                {
-                    playerAmmo.AddAmmo(_ammoAmount);
-                }
+
+                playerAmmo.AddAmmo(_ammoAmount);
             }
         }
 

@@ -14,10 +14,10 @@ namespace TDS.Game.Enemy.Base
         public void Deactivate()
         {
             enabled = false;
+            
         }
 
         #endregion
-
-        protected virtual void DoStm(){}
+        
     }
 }

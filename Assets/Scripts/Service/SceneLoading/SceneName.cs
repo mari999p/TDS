@@ -6,6 +6,7 @@ namespace TDS.Service.SceneLoading
 
         public const string Level1 = "Level1";
         public const string Menu = "MenuScene";
+        public const string GameOverSceneName = "GameOver";
 
         #endregion
     }

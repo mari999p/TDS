@@ -1,4 +1,5 @@
 using System;
+using Pathfinding;
 using TDS.Game.Common;
 using TDS.Game.UI;
 using TDS.Service.PickUp;
@@ -20,6 +21,8 @@ namespace TDS.Game.Enemy.Base
         [SerializeField] private EnemyAnimation _animation;
         [SerializeField] private PickUpService _pickUpService;
         [SerializeField] private HpBar _hpBar;
+     
+        
 
         #endregion
 
@@ -36,11 +39,7 @@ namespace TDS.Game.Enemy.Base
         #endregion
 
         #region Unity lifecycle
-
-        // private void Start()
-        // {
-        //     _pickUpService = ServicesLocator.Instance.Get<PickUpService>();
-        // }
+        
 
         private void OnEnable()
         {
@@ -67,10 +66,10 @@ namespace TDS.Game.Enemy.Base
             _attackAgro.Deactivate();
             _movementAgro.Deactivate();
             _animation.PlayDeath();
-
             OnHappened?.Invoke();
             _pickUpService.TrySpawnPickup(transform.position);
             OnEnemyDeath();
+            
         }
 
         private void HpChangedCallback(int hp)

@@ -1,4 +1,5 @@
 using TDS.Infrastructure.Locator;
+using TDS.Service.GameOver;
 using TDS.Service.LevelLoading;
 using TDS.Service.Mission;
 using TDS.Utils.Log;
@@ -9,6 +10,8 @@ namespace TDS.Service.LevelCompletion
     {
         #region Variables
 
+        private readonly GameOverService _gameOverService;
+
         private readonly LevelLoadingService _levelLoadingService;
 
         private readonly MissionService _missionService;
@@ -17,10 +20,12 @@ namespace TDS.Service.LevelCompletion
 
         #region Setup/Teardown
 
-        public LevelCompletionService(MissionService missionService, LevelLoadingService levelLoadingService)
+        public LevelCompletionService(MissionService missionService, LevelLoadingService levelLoadingService,
+            GameOverService gameOverService)
         {
             _missionService = missionService;
             _levelLoadingService = levelLoadingService;
+            _gameOverService = gameOverService;
         }
 
         #endregion
@@ -43,16 +48,13 @@ namespace TDS.Service.LevelCompletion
 
         private void MissionCompletedCallback()
         {
-            this.Error();
-            // TODO: Show win screen
-            // Enter next level
             if (_levelLoadingService.HasNextLevel())
             {
                 _levelLoadingService.EnterNextLevel();
             }
             else
             {
-                // TODO:
+                _gameOverService.ShowGameOverScreen();
                 this.Error("GAME OVER!");
             }
         }

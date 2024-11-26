@@ -23,6 +23,13 @@ namespace TDS.Infrastructure.State
             PlayerMovement playerMovement = Object.FindObjectOfType<PlayerMovement>();
             UnitHp playerHp = playerMovement.GetComponent<UnitHp>();
             gameScreen.PlayerHpBar.Construct(playerHp);
+            PlayerAmmo playerAmmo = playerMovement.GetComponent<PlayerAmmo>();
+            gameScreen.AmmoDisplay.Construct(playerAmmo);
+            BossHp bossHp = Object.FindObjectOfType<BossHp>();
+            if (bossHp != null)
+            {
+                gameScreen.BossHpBar.Construct(bossHp);
+            }
         }
 
         public override void Exit()
